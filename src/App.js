@@ -1,7 +1,8 @@
 import './App.css'
+import Router from './pages'
 
 function App() {
-  return <div>hello word</div>
+  return <Router />
 }
 
 export default App
