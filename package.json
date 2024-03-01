@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "pre-commit": "lint-staged --allow-empty",
     "pre-push": "npm run lint",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "eslintConfig": {
     "extends": [
