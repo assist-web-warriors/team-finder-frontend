@@ -1,0 +1,25 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": ["react-app", "prettier"],
+  "plugins": ["react", "prettier"],
+  "rules": {
+    "curly": ["off"],
+    "no-shadow": "off",
+    "no-param-reassign": ["error", { "props": false }],
+    "react-hooks/exhaustive-deps": "off",
+    "no-underscore-dangle": "off",
+    "no-console": "off",
+    "no-unused-vars": "off",
+    "no-multiple-empty-lines": ["error", { "max": 2 }],
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
+    "no-relative-import-paths/no-relative-import-paths": "off"
+  }
+}

@@ -1,12 +1,12 @@
-import TemplatePage from './template.page';
+import TemplatePage from './template.page'
 
 const Pages = () => {
-    return (
-        <>
-            to be routed
-            <TemplatePage />
-        </>
-    );
-};
+  return (
+    <>
+      to be routed
+      <TemplatePage />
+    </>
+  )
+}
 
-export default Pages;
+export default Pages
