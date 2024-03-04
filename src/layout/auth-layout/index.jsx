@@ -1,6 +1,4 @@
-import Container from './styled-components';
+import { BaseLayout } from '../base-layout';
+import { ImageContainer } from './index.styled';
 
-const Template = () => {
-  return <Container>Template Component</Container>;
-};
-export default Template;
+export const authLayout = <BaseLayout navigationSlot={<nav />}>{<ImageContainer />}</BaseLayout>; // todo add auth navigation component
