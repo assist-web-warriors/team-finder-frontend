@@ -1,4 +1,4 @@
-import { baseApi } from 'src/app/base-api'
+import { baseApi } from 'src/app/base-api';
 
 const userApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
@@ -10,6 +10,6 @@ const userApi = baseApi.injectEndpoints({
       }),
     }),
   }),
-})
+});
 
-export const { useSigninMutation } = userApi
+export const { useSigninMutation } = userApi;
