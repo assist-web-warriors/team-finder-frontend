@@ -1,6 +1,3 @@
-import Container from './styled-components';
+import { BaseLayout } from '../base-layout';
 
-const Template = () => {
-  return <Container>Template Component</Container>;
-};
-export default Template;
+export const appLayout = <BaseLayout navigationSlot={<nav />} />; // todo add navigation component
