@@ -1,6 +1,6 @@
-import { Navigate, createBrowserRouter, useLocation } from 'react-router-dom';
-import { appLayout, authLayout } from 'src/layout';
-import { AuthPage } from 'src/pages/auth';
+import { Navigate, Outlet, createBrowserRouter, useLocation } from 'react-router-dom';
+import { AppLayout, AuthLayout } from 'src/layouts';
+import { OrganizationPage, AuthPage } from 'src/pages';
 
 const AuthGuard = ({ children }) => {
   const isAuthorized = true;
@@ -13,7 +13,7 @@ const AuthGuard = ({ children }) => {
 export const router = createBrowserRouter([
   {
     path: 'login',
-    element: authLayout,
+    element: <AuthLayout />,
     children: [
       {
         path: '',
@@ -23,8 +23,38 @@ export const router = createBrowserRouter([
   },
   {
     path: '/',
-    element: <AuthGuard>{appLayout}</AuthGuard>,
+    element: (
+      <AuthGuard>
+        <Outlet />
+      </AuthGuard>
+    ),
     errorElement: <>404</>,
-    children: [{ path: '', element: <>Pages</> }],
+    children: [
+      {
+        path: '',
+        element: (
+          <AppLayout>
+            <p>to be added</p>
+          </AppLayout>
+        ),
+      },
+    ],
+  },
+  {
+    path: '/organization',
+    element: (
+      <AuthGuard>
+        <AppLayout>
+          <Outlet />
+        </AppLayout>
+      </AuthGuard>
+    ),
+    errorElement: <>404</>,
+    children: [
+      {
+        path: '',
+        element: <OrganizationPage />,
+      },
+    ],
   },
 ]);
