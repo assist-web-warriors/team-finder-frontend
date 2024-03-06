@@ -1,5 +1,5 @@
 import { Navigate, createBrowserRouter, useLocation } from 'react-router-dom';
-import { appLayout, authLayout } from 'src/layout';
+import { appLayout, authLayout } from 'src/layouts';
 import { AuthPage } from 'src/pages/auth';
 
 const AuthGuard = ({ children }) => {
