@@ -1,3 +1,13 @@
-import { BaseLayout } from '../base-layout';
+import Container from './index.styled';
 
-export const appLayout = <BaseLayout navigationSlot={<nav />} />; // todo add navigation component
+const AppLayout = ({ children }) => {
+  return (
+    <Container>
+      {children}
+      <div>navigation</div>
+      <div>sidebar</div>
+    </Container>
+  );
+};
+
+export default AppLayout;

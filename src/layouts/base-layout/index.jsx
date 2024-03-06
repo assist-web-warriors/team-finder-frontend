@@ -2,7 +2,7 @@ import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { LayoutContainer, Main } from './index.styled';
 
-export const BaseLayout = ({ navigationSlot, children }) => {
+const BaseLayout = ({ navigationSlot, children }) => {
   return (
     <Suspense fallback={<>Loading</>}>
       <LayoutContainer>
@@ -15,3 +15,4 @@ export const BaseLayout = ({ navigationSlot, children }) => {
     </Suspense>
   );
 };
+export default BaseLayout;

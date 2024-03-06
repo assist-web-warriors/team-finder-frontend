@@ -1,7 +1,11 @@
-import { TemplateComponent } from '../features/template-feature';
+import { Container } from '@chakra-ui/react';
 
 const OrganizationPage = () => {
-  return <TemplateComponent />;
+  return (
+    <Container>
+      <p>hello my friend</p>
+    </Container>
+  );
 };
 
 export default OrganizationPage;

@@ -1,12 +1,2 @@
-import TemplatePage from './template.page';
-
-const Pages = () => {
-  return (
-    <>
-      to be routed
-      <TemplatePage />
-    </>
-  );
-};
-
-export default Pages;
+export { default as OrganizationPage } from './organization.page';
+export { default as AuthPage } from './auth.page';
