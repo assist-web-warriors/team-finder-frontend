@@ -32,11 +32,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: '',
-        element: (
-          <AppLayout>
-            <p>to be added</p>
-          </AppLayout>
-        ),
+        element: <AppLayout></AppLayout>,
       },
     ],
   },

@@ -3,9 +3,11 @@ import Container from './index.styled';
 import { Link } from 'react-router-dom';
 import CONSTANTS from 'src/common/constants';
 import logo from '../../assets/team-finder-logo.svg';
-import { SearchIcon } from '@chakra-ui/icons';
+import { SearchIcon, SunIcon } from '@chakra-ui/icons';
 
 const Navigation = () => {
+  const constants = Object.values(CONSTANTS.NAVIGATION_PAGES);
+
   return (
     <Container>
       <img src={logo} alt='Logo' />
@@ -15,23 +17,14 @@ const Navigation = () => {
         </InputRightElement>
         <Input type='search' placeholder='Search...'></Input>
       </InputGroup>
-      <Flex bgColor={'#fff'} gap={'24px'} alignItems={'center'}>
-        <Link to={CONSTANTS.NAVIGATION_PAGES.HOME.URL}>{CONSTANTS.NAVIGATION_PAGES.HOME.NAME}</Link>
-        <Link to={CONSTANTS.NAVIGATION_PAGES.ADDITIONAL_CONTEXT.URL}>
-          {CONSTANTS.NAVIGATION_PAGES.ADDITIONAL_CONTEXT.NAME}
-        </Link>
-        <Link to={CONSTANTS.NAVIGATION_PAGES.NOTIFICATION.URL}>
-          {CONSTANTS.NAVIGATION_PAGES.NOTIFICATION.NAME}
-          <Icon marginLeft={'10px'} bgColor={'#fff'} />
-        </Link>
-
-        <Flex>
-          <Avatar
-            name='Segun Adebayo'
-            src='https://bit.ly/sage-adebayo'
-            size={'sm'}
-            bgColor={'#fff'}
-          />
+      <Flex gap={'40px'} bgColor={'#fff'}>
+        {constants.map((value) => (
+          <Flex bgColor={'#fff'}>
+            <Link to={value.URL}>{value.NAME}</Link>
+          </Flex>
+        ))}
+        <Flex bgColor={'#fff'}>
+          <Avatar name='Segun Adebayo' src='https://bit.ly/sage-adebayo' size={'sm'} />
         </Flex>
       </Flex>
     </Container>

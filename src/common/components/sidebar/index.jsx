@@ -1,9 +1,12 @@
-import { Avatar, Button, Flex, Heading, Text } from '@chakra-ui/react';
+import { Avatar, Button, Flex, Heading, Text, border } from '@chakra-ui/react';
 import Container from './index.styled';
 import CONSTANTS from 'src/common/constants';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { ExternalLinkIcon, SunIcon } from '@chakra-ui/icons';
 
 const Sidebar = () => {
+  const location = useLocation();
+  const constants = Object.values(CONSTANTS.SIDEBAR_PAGES);
   return (
     <Container>
       <Flex
@@ -22,18 +25,29 @@ const Sidebar = () => {
           position={'relative'}
           marginTop={'calc(4rem * -1)'}
         />
-        <Heading color={'black'} fontSize={'lg'}>
-          Sam Smitch
-        </Heading>
-        <Text fontSize='xs'>user@yahoo.com</Text>
-        <Button width={'147px'} height={'32px'} fontSize={'xs'}>
-          View Profile
-        </Button>
+        <Flex
+          bgColor={'#fff'}
+          direction={'column'}
+          gap={'16px'}
+          justifyContent={'center'}
+          alignItems={'center'}>
+          <Flex direction={'column'} gap={'6px'} bgColor={'#fff'}>
+            <Heading bgColor={'#fff'} color={'black'} fontSize={'lg'}>
+              Sam Smitch
+            </Heading>
+            <Text bgColor={'#fff'} fontSize='xs'>
+              user@yahoo.com
+            </Text>
+          </Flex>
+          <Button width={'147px'} height={'32px'} fontSize={'xs'} textAlign={'center'}>
+            View Profile
+            <ExternalLinkIcon />
+          </Button>
+        </Flex>
       </Flex>
       <Flex
         color={'black'}
         gap={'15px'}
-        justifyContent={'center'}
         alignItems={'flex-start'}
         fontSize={'lg'}
         borderRadius={'8px'}
@@ -41,20 +55,18 @@ const Sidebar = () => {
         height={'408px'}
         bgColor={'#fff'}
         direction={'column'}
-        fontWeight={'400'}>
-        <Link to={CONSTANTS.SIDEBAR_PAGES.ORGANIZATION.URL}>
-          {CONSTANTS.SIDEBAR_PAGES.ORGANIZATION.NAME}
-        </Link>
-        <Link to={CONSTANTS.SIDEBAR_PAGES.DEPARTMENTS.NAME}>
-          {CONSTANTS.SIDEBAR_PAGES.DEPARTMENTS.NAME}
-        </Link>
-        <Link to={CONSTANTS.SIDEBAR_PAGES.PERSONAL.NAME}>
-          {CONSTANTS.SIDEBAR_PAGES.PERSONAL.NAME}
-        </Link>
-        <Link to={CONSTANTS.SIDEBAR_PAGES.TEAM.NAME}>{CONSTANTS.SIDEBAR_PAGES.TEAM.NAME}</Link>
-        <Link to={CONSTANTS.SIDEBAR_PAGES.PROJECTS.NAME}>
-          {CONSTANTS.SIDEBAR_PAGES.PROJECTS.NAME}
-        </Link>
+        fontWeight={'400'}
+        padding={'24px'}
+        paddingTop={'68px'}>
+        {constants.map((value, index) => (
+          <Flex
+            borderLeft={location.pathname === value.URL ? '3px #0356E8 solid' : ''}
+            bgColor={'#fff'}
+            padding={'3px'}>
+            <img src={value.ICON} alt='Icon'></img>
+            <Link to={value.URL}>{value.NAME}</Link>
+          </Flex>
+        ))}
       </Flex>
     </Container>
   );

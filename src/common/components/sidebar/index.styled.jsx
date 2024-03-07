@@ -7,6 +7,10 @@ const Container = styled.div`
   margin-left: 100px;
   margin-right: 100px;
   margin-top: 100px;
+  a {
+    font-size: var(--large-text);
+    font-weight: 400;
+  }
 `;
 
 export default Container;
