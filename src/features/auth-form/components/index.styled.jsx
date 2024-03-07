@@ -1,9 +1,27 @@
 import styled from 'styled-components';
 
-export const FormContainer = styled.div`
+export const Placeholder = styled.div`
+  margin-top: 8px;
+  height: 19px;
+`;
+
+export const IconContainer = styled.div`
   display: flex;
-  width: 415px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 28px;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+  width: 100%;
+`;
+
+export const Icon = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+
+  width: 100%;
+  height: 50%;
+  border-left: 1px solid #e0e0e0;
 `;
