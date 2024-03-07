@@ -7,6 +7,7 @@ export const LayoutContainer = styled.div`
 `;
 
 export const Main = styled.main`
+  display: flex;
   width: 100%;
   padding: 2rem;
 `;

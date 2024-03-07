@@ -1,23 +1,32 @@
 import { Navigate, Outlet, createBrowserRouter, useLocation } from 'react-router-dom';
 import { AppLayout, AuthLayout } from 'src/layouts';
-import { OrganizationPage, AuthPage } from 'src/pages';
+import { OrganizationPage, LoginPage, SignupPage } from 'src/pages';
 
 const AuthGuard = ({ children }) => {
   const isAuthorized = true;
   const location = useLocation();
 
-  if (!isAuthorized) return <Navigate to='/login' state={{ from: location }} />;
+  if (!isAuthorized) return <Navigate to='auth/signup' state={{ from: location }} />;
   return children;
 };
 
 export const router = createBrowserRouter([
   {
-    path: 'login',
+    path: 'auth',
     element: <AuthLayout />,
+    errorElement: <>404</>,
     children: [
       {
         path: '',
-        element: <AuthPage />,
+        element: <Navigate to='signup' />,
+      },
+      {
+        path: 'login',
+        element: <LoginPage />,
+      },
+      {
+        path: 'signup',
+        element: <SignupPage />,
       },
     ],
   },
