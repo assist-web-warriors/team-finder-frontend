@@ -10,11 +10,11 @@ const Sidebar = () => {
   return (
     <Container>
       <Flex
+        bgColor={'#fff'}
         gap={'28px'}
         justifyContent={'center'}
         alignItems={'center'}
         direction={'column'}
-        bgColor={'white'}
         width={'255px'}
         height={'202px'}
         borderRadius={'8px'}>
@@ -25,19 +25,12 @@ const Sidebar = () => {
           position={'relative'}
           marginTop={'calc(4rem * -1)'}
         />
-        <Flex
-          bgColor={'#fff'}
-          direction={'column'}
-          gap={'16px'}
-          justifyContent={'center'}
-          alignItems={'center'}>
-          <Flex direction={'column'} gap={'6px'} bgColor={'#fff'}>
-            <Heading bgColor={'#fff'} color={'black'} fontSize={'lg'}>
+        <Flex direction={'column'} gap={'16px'} justifyContent={'center'} alignItems={'center'}>
+          <Flex direction={'column'} gap={'6px'}>
+            <Heading color={'black'} fontSize={'lg'}>
               Sam Smitch
             </Heading>
-            <Text bgColor={'#fff'} fontSize='xs'>
-              user@yahoo.com
-            </Text>
+            <Text fontSize='xs'>user@yahoo.com</Text>
           </Flex>
           <Button width={'147px'} height={'32px'} fontSize={'xs'} textAlign={'center'}>
             View Profile
@@ -61,9 +54,9 @@ const Sidebar = () => {
         {constants.map((value, index) => (
           <Flex
             borderLeft={location.pathname === value.URL ? '3px #0356E8 solid' : ''}
-            bgColor={'#fff'}
-            padding={'3px'}>
-            <img src={value.ICON} alt='Icon'></img>
+            padding={'3px'}
+            gap={'8px'}>
+            {value.ICON}
             <Link to={value.URL}>{value.NAME}</Link>
           </Flex>
         ))}

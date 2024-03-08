@@ -11,6 +11,9 @@ const Container = styled.div`
     font-size: var(--large-text);
     font-weight: 400;
   }
+  svg {
+    background-color: #fff;
+  }
 `;
 
 export default Container;

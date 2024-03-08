@@ -1,4 +1,12 @@
-import { Avatar, Flex, Icon, Input, InputGroup, InputRightElement } from '@chakra-ui/react';
+import {
+  Avatar,
+  Flex,
+  Icon,
+  Input,
+  InputGroup,
+  InputRightAddon,
+  InputRightElement,
+} from '@chakra-ui/react';
 import Container from './index.styled';
 import { Link } from 'react-router-dom';
 import CONSTANTS from 'src/common/constants';
@@ -11,19 +19,19 @@ const Navigation = () => {
   return (
     <Container>
       <img src={logo} alt='Logo' />
-      <InputGroup width={'261px'} height={'32px'} color='gray.300' bgColor={'#FFF'}>
-        <InputRightElement pointerEvents='none' bgColor={'#fff'}>
-          <SearchIcon bgColor={'#fff'} />
-        </InputRightElement>
-        <Input type='search' placeholder='Search...'></Input>
+      <InputGroup width={'261px'} height={'32px'} color='gray.300'>
+        <Input type='text' placeholder='Search...'></Input>
+        <InputRightAddon pointerEvents='none' bgColor={'#fff'}>
+          <SearchIcon />
+        </InputRightAddon>
       </InputGroup>
-      <Flex gap={'40px'} bgColor={'#fff'}>
+      <Flex gap={'40px'}>
         {constants.map((value) => (
-          <Flex bgColor={'#fff'}>
+          <Flex>
             <Link to={value.URL}>{value.NAME}</Link>
           </Flex>
         ))}
-        <Flex bgColor={'#fff'}>
+        <Flex>
           <Avatar name='Segun Adebayo' src='https://bit.ly/sage-adebayo' size={'sm'} />
         </Flex>
       </Flex>

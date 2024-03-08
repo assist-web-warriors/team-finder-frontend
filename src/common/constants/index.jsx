@@ -1,8 +1,9 @@
-import department from '../../common/assets/department-icon.svg';
-import project from '../../common/assets/project-icon.svg';
-import task from '../../common/assets/task-icon.svg';
-import team from '../../common/assets/team-icon.svg';
-import user from '../../common/assets/user-icon.svg';
+import DepartmentIcon from '../assets/department-icon.svg?react';
+import ProjectIcon from '../assets/project-icon.svg?react';
+import TaskIcon from '../assets/task-icon.svg?react';
+import TeamIcon from '../assets/team-icon.svg?react';
+import UserIcon from '../assets/user-icon.svg?react';
+
 const CONSTANTS = {
   PAGES: {
     DEPARTMENTS: '/departments',
@@ -14,27 +15,27 @@ const CONSTANTS = {
     ORGANIZATION: {
       NAME: 'Organization',
       URL: '/organization',
-      ICON: { task },
+      ICON: <DepartmentIcon />,
     },
     DEPARTMENTS: {
       NAME: 'Departments',
       URL: '/departments',
-      ICON: { department },
+      ICON: <TaskIcon />,
     },
     PERSONAL: {
       NAME: 'Personal',
       URL: '/personal',
-      ICON: { user },
+      ICON: <UserIcon />,
     },
     TEAM: {
       NAME: 'Team',
       URL: '/team',
-      ICON: { team },
+      ICON: <TeamIcon />,
     },
     PROJECTS: {
       NAME: 'Projects',
       URL: '/projects',
-      ICON: { project },
+      ICON: <ProjectIcon />,
     },
   },
   NAVIGATION_PAGES: {

@@ -4,8 +4,8 @@ import Container from './index.styled';
 const AppLayout = ({ children }) => {
   return (
     <Container>
-      {children}
       <Navigation />
+      {children}
       <Sidebar />
     </Container>
   );

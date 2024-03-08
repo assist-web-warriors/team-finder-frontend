@@ -1,6 +1,7 @@
 import { Navigate, Outlet, createBrowserRouter, useLocation } from 'react-router-dom';
 import { AppLayout, AuthLayout } from 'src/layouts';
 import { OrganizationPage, AuthPage } from 'src/pages';
+import DepartmentPage from 'src/pages/department.page';
 
 const AuthGuard = ({ children }) => {
   const isAuthorized = true;
@@ -50,6 +51,23 @@ export const router = createBrowserRouter([
       {
         path: '',
         element: <OrganizationPage />,
+      },
+    ],
+  },
+  {
+    path: '/departments',
+    element: (
+      <AuthGuard>
+        <AppLayout>
+          <Outlet />
+        </AppLayout>
+      </AuthGuard>
+    ),
+    errorElement: <>404</>,
+    children: [
+      {
+        path: '',
+        element: <DepartmentPage />,
       },
     ],
   },
