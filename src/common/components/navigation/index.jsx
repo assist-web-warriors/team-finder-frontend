@@ -11,7 +11,7 @@ import Container from './index.styled';
 import { Link } from 'react-router-dom';
 import CONSTANTS from 'src/common/constants';
 import logo from '../../assets/team-finder-logo.svg';
-import { SearchIcon, SunIcon } from '@chakra-ui/icons';
+import { SearchIcon } from '@chakra-ui/icons';
 
 const Navigation = () => {
   const constants = Object.values(CONSTANTS.NAVIGATION_PAGES);
