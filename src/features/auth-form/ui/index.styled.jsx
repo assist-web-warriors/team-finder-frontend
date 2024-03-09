@@ -10,6 +10,7 @@ export const FormContainer = styled.div`
 export const Paragraph = styled.div`
   display: flex;
   justify-content: center;
+  font-weight: 600;
 `;
 
 export const FormHeader = styled.div`
@@ -19,12 +20,6 @@ export const FormHeader = styled.div`
   flex-direction: column;
   gap: 12px;
   margin-bottom: 20px;
-`;
-
-export const HeaderTitle = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
 `;
 
 export const AuthContainer = styled.div`

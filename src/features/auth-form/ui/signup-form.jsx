@@ -1,13 +1,15 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Text, Select } from '@chakra-ui/react';
-import { FormInput, PasswordInput, OrganizationOptions } from '../components';
-import { useFormValidation } from '../lib/useFormValidation';
-import { FormContainer, Paragraph, FormHeader, HeaderTitle, AuthContainer } from './index.styled';
+import { FormInput, PasswordInput, OrganizationOptions, FormTitle } from '../components';
+import { useFormValidation, signupSchema, signupAdminSchema } from '../lib';
+import { FormContainer, Paragraph, FormHeader, AuthContainer } from './index.styled';
 
 const SignupForm = () => {
   const [selected, setSelected] = useState('employee');
-  const { handleSubmit, register, errors } = useFormValidation(selected);
+  const selectedSchema =
+    selected === 'employee' ? signupSchema : signupSchema.concat(signupAdminSchema);
+  const { handleSubmit, register, errors } = useFormValidation(selectedSchema);
 
   const onSubmit = (values) => console.log(values);
 
@@ -15,15 +17,8 @@ const SignupForm = () => {
     <AuthContainer>
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormContainer>
+          <FormTitle title='Hello' subtitle='To sign up, please fill the fields below.' />
           <FormHeader>
-            <HeaderTitle>
-              <Text fontSize='28px' fontWeight='700'>
-                Hello
-              </Text>
-              <Text fontSize='16px' fontWeight='600' color='gray'>
-                To sign up, please fill the fields below.
-              </Text>
-            </HeaderTitle>
             <Select
               w='170px'
               h='32px'
@@ -65,7 +60,7 @@ const SignupForm = () => {
           <Paragraph>
             <Text>Already have an account ?</Text>
             <Link to='/auth/login'>
-              <Text color='#0356E8'>Log In</Text>
+              <Text color='blue'>Log In</Text>
             </Link>
           </Paragraph>
         </FormContainer>
