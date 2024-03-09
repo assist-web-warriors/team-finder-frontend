@@ -1,2 +1,1 @@
-export { SignupForm } from './auth-form';
-export { LoginForm } from './auth-form';
+export { SignupForm, ForgotPasswordForm, LoginForm, ResetPaswordForm } from './auth-form';

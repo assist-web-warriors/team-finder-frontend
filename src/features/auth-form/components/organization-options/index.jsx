@@ -1,6 +1,6 @@
 import { FormInput } from '../form-input';
 
-export const OrganizationOptions = ({ register, errors }) => {
+const OrganizationOptions = ({ register, errors }) => {
   return (
     <>
       <FormInput
@@ -20,3 +20,5 @@ export const OrganizationOptions = ({ register, errors }) => {
     </>
   );
 };
+
+export default OrganizationOptions;

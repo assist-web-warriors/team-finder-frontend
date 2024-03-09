@@ -1,34 +1,38 @@
 import { Link } from 'react-router-dom';
 import { Button, Text } from '@chakra-ui/react';
-import { FormInput, PasswordInput, FormTitle, LoginOptions } from '../components';
+import { PasswordInput, FormTitle } from '../components';
 import { FormContainer, Paragraph, AuthContainer } from './index.styled';
-import { useFormValidation, loginSchema } from '../lib';
+import { useFormValidation, resetPasswordSchema } from '../lib';
 
-const LoginForm = () => {
-  const { handleSubmit, register, errors } = useFormValidation(loginSchema);
+const ResetPaswordForm = () => {
+  const { handleSubmit, register, errors } = useFormValidation(resetPasswordSchema);
 
-  const onSubmit = (values) => console.log(values);
+  const onSubmit = (values) => {
+    console.log(values);
+  };
 
   return (
     <AuthContainer>
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormContainer>
-          <FormTitle title='Welcome' subtitle='Enter your account details below.' />
-          <FormInput
-            label='Email'
-            placeholder='Enter your email'
-            errors={errors}
-            id='email'
-            {...register('email')}
+          <FormTitle
+            title='Reset password'
+            subtitle='Enter a new password below to change your password.'
           />
           <PasswordInput
-            label='Password'
+            label='New password'
             placeholder='*******'
             errors={errors}
             id='password'
             {...register('password')}
           />
-          <LoginOptions label='Remember me' {...register('remember_me')} />
+          <PasswordInput
+            label='Confirm password'
+            placeholder='*******'
+            errors={errors}
+            id='conf_password'
+            {...register('conf_password')}
+          />
           <Button h='48px' mb='16px' colorScheme='blue' type='submit'>
             Log in
           </Button>
@@ -46,4 +50,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default ResetPaswordForm;
