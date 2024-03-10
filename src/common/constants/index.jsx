@@ -29,7 +29,7 @@ const CONSTANTS = {
     },
     TEAM: {
       NAME: 'Team',
-      URL: '/team',
+      URL: '/teams',
       ICON: <TeamIcon />,
     },
     PROJECTS: {
