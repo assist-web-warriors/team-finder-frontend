@@ -1,11 +1,21 @@
 import { RouterProvider } from 'react-router-dom';
-import { ChakraProvider } from '@chakra-ui/react';
+import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import { router } from './app/app-router';
 import './styles/global.css';
 
+const theme = extendTheme({
+  styles: {
+    global: {
+      body: {
+        bg: 'var(--bg-color)',
+      },
+    },
+  },
+});
+
 function App() {
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <RouterProvider router={router} />
     </ChakraProvider>
   );

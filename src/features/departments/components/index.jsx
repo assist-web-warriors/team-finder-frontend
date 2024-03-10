@@ -1,1 +1,1 @@
-export { default as TemplateComponent } from './template-component';
+export { default as Explorer } from './Explorer';

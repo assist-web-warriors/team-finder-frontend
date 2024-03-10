@@ -1,9 +1,10 @@
 import { Container } from '@chakra-ui/react';
+import { AddNewAdmin } from 'src/features/roles';
 
 const OrganizationPage = () => {
   return (
     <Container>
-      <p>hello my friend</p>
+      <AddNewAdmin />
     </Container>
   );
 };
