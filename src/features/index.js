@@ -5,3 +5,5 @@ export {
   ResetPaswordForm,
   EmployeeSignUpForm,
 } from './auth-form';
+
+export { ProjectsMenu } from './projects';

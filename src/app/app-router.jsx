@@ -1,6 +1,6 @@
 import { Navigate, Outlet, createBrowserRouter, useLocation } from 'react-router-dom';
 import { AppLayout, AuthLayout } from 'src/layouts';
-import { OrganizationPage, AuthPages, DepartmentPage } from 'src/pages';
+import { OrganizationPage, AuthPages, DepartmentPage, ProjectsPage } from 'src/pages';
 
 const AuthGuard = ({ children }) => {
   const isAuthorized = true;
@@ -14,29 +14,14 @@ export const router = createBrowserRouter([
   {
     path: 'auth',
     element: <AuthLayout />,
-    errorElement: <>404</>,
+    errorElement: <>404</>, // to do <AuthNotFound />
     children: [
       { path: '', element: <Navigate to='signup' /> },
       { path: '*', element: <AuthPages /> },
     ],
   },
   {
-    path: '/',
-    element: (
-      <AuthGuard>
-        <Outlet />
-      </AuthGuard>
-    ),
-    errorElement: <>404</>,
-    children: [
-      {
-        path: '',
-        element: <AppLayout></AppLayout>,
-      },
-    ],
-  },
-  {
-    path: '/organization',
+    path: '',
     element: (
       <AuthGuard>
         <AppLayout>
@@ -44,29 +29,11 @@ export const router = createBrowserRouter([
         </AppLayout>
       </AuthGuard>
     ),
-    errorElement: <>404</>,
+    errorElement: <>404</>, // to do <AppNotFound />
     children: [
-      {
-        path: '',
-        element: <OrganizationPage />,
-      },
-    ],
-  },
-  {
-    path: '/departments',
-    element: (
-      <AuthGuard>
-        <AppLayout>
-          <Outlet />
-        </AppLayout>
-      </AuthGuard>
-    ),
-    errorElement: <>404</>,
-    children: [
-      {
-        path: '',
-        element: <DepartmentPage />,
-      },
+      { path: 'organization', element: <OrganizationPage /> },
+      { path: 'departments', element: <DepartmentPage /> },
+      { path: 'projects', element: <ProjectsPage /> },
     ],
   },
 ]);
