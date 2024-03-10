@@ -1,6 +1,6 @@
 import { Navigate, Outlet, createBrowserRouter, useLocation } from 'react-router-dom';
 import { AppLayout, AuthLayout } from 'src/layouts';
-import { OrganizationPage, AuthPage, DepartmentPage } from 'src/pages';
+import { OrganizationPage, AuthPages, DepartmentPage } from 'src/pages';
 
 const AuthGuard = ({ children }) => {
   const isAuthorized = true;
