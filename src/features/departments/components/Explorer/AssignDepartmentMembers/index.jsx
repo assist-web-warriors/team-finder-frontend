@@ -1,6 +1,6 @@
 import Container from './index.styled';
 
-const Template = () => {
+const AssignDepartmentMembers = () => {
   return <Container>Template Component</Container>;
 };
-export default Template;
+export default AssignDepartmentMembers;

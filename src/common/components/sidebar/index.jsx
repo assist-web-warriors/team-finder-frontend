@@ -15,15 +15,13 @@ const Sidebar = () => {
         justifyContent={'center'}
         alignItems={'center'}
         direction={'column'}
-        width={'255px'}
-        height={'202px'}
-        borderRadius={'8px'}>
+        padding={'20px'}
+        borderRadius={'16px'}>
         <Avatar
           name='Segun Adebayo'
           src='https://bit.ly/sage-adebayo'
           size={'xl'}
-          position={'relative'}
-          marginTop={'calc(4rem * -1)'}
+          marginTop={'calc(2rem * -1)'}
         />
         <Flex direction={'column'} gap={'16px'} justifyContent={'center'} alignItems={'center'}>
           <Flex direction={'column'} gap={'6px'}>
@@ -43,14 +41,12 @@ const Sidebar = () => {
         gap={'15px'}
         alignItems={'flex-start'}
         fontSize={'lg'}
-        borderRadius={'8px'}
-        width={'255px'}
-        height={'408px'}
+        borderRadius={'16px'}
         bgColor={'#fff'}
         direction={'column'}
         fontWeight={'400'}
-        padding={'24px'}
-        paddingTop={'68px'}>
+        height={'100%'}
+        padding={'24px'}>
         {constants.map((value, index) => (
           <Flex
             borderLeft={location.pathname === value.URL ? '3px #0356E8 solid' : ''}

@@ -1,7 +1,7 @@
-import { Container } from '@chakra-ui/react';
-import { AddNewAdmin } from 'src/features/roles';
+import { Explorer } from 'src/features/departments';
+
 const DepartmentPage = () => {
-  return <Container></Container>;
+  return <Explorer />;
 };
 
 export default DepartmentPage;

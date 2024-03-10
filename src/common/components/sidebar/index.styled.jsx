@@ -3,10 +3,12 @@ import styled from 'styled-components';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 40px;
-  margin-left: 100px;
-  margin-right: 100px;
-  margin-top: 100px;
+  gap: var(--layout-gap);
+  width: var(--sidebar-size);
+  position: sticky;
+  top: var(--layout-gap);
+  height: calc(100vh - var(--layout-gap));
+  padding-bottom: var(--layout-gap);
   a {
     font-size: var(--large-text);
     font-weight: 400;

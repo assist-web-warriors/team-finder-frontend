@@ -3,11 +3,15 @@ import Container from './index.styled';
 
 const AppLayout = ({ children }) => {
   return (
-    <Container>
+    <Container.Default>
       <Navigation />
-      {children}
-      <Sidebar />
-    </Container>
+      <Container.Wrapper>
+        <Container.Content>
+          <Sidebar />
+          <Container.Children>{children}</Container.Children>
+        </Container.Content>
+      </Container.Wrapper>
+    </Container.Default>
   );
 };
 

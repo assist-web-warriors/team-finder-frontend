@@ -17,25 +17,27 @@ const Navigation = () => {
   const constants = Object.values(CONSTANTS.NAVIGATION_PAGES);
 
   return (
-    <Container>
-      <img src={logo} alt='Logo' />
-      <InputGroup width={'261px'} height={'32px'} color='gray.300'>
-        <Input type='text' placeholder='Search...'></Input>
-        <InputRightAddon pointerEvents='none' bgColor={'#fff'}>
-          <SearchIcon />
-        </InputRightAddon>
-      </InputGroup>
-      <Flex gap={'40px'}>
-        {constants.map((value) => (
+    <Container.Default>
+      <Container.Wrapper>
+        <img src={logo} alt='Logo' />
+        <InputGroup width={'261px'} height={'32px'} color='gray.300'>
+          <Input type='text' placeholder='Search...'></Input>
+          <InputRightAddon pointerEvents='none' bgColor={'#fff'}>
+            <SearchIcon />
+          </InputRightAddon>
+        </InputGroup>
+        <Flex gap={'40px'}>
+          {constants.map((value) => (
+            <Flex>
+              <Link to={value.URL}>{value.NAME}</Link>
+            </Flex>
+          ))}
           <Flex>
-            <Link to={value.URL}>{value.NAME}</Link>
+            <Avatar name='Segun Adebayo' src='https://bit.ly/sage-adebayo' size={'sm'} />
           </Flex>
-        ))}
-        <Flex>
-          <Avatar name='Segun Adebayo' src='https://bit.ly/sage-adebayo' size={'sm'} />
         </Flex>
-      </Flex>
-    </Container>
+      </Container.Wrapper>
+    </Container.Default>
   );
 };
 export default Navigation;
