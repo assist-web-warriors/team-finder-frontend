@@ -1,10 +1,10 @@
-import AddDepartment from './AddDepartment';
+import ViewDepartment from '../ViewDepartment';
 import Container from './index.styled';
 
 const Explorer = () => {
   return (
     <Container>
-      <AddDepartment />
+      <ViewDepartment />
     </Container>
   );
 };
