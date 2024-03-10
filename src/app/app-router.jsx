@@ -6,19 +6,18 @@ const AuthGuard = ({ children }) => {
   const isAuthorized = true;
   const location = useLocation();
 
-  if (!isAuthorized) return <Navigate to='/login' state={{ from: location }} />;
+  if (!isAuthorized) return <Navigate to='auth/signup' state={{ from: location }} />;
   return children;
 };
 
 export const router = createBrowserRouter([
   {
-    path: 'login',
+    path: 'auth',
     element: <AuthLayout />,
+    errorElement: <>404</>,
     children: [
-      {
-        path: '',
-        element: <AuthPage />,
-      },
+      { path: '', element: <Navigate to='signup' /> },
+      { path: '*', element: <AuthPages /> },
     ],
   },
   {
