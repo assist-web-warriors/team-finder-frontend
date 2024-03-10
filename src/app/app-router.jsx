@@ -1,5 +1,6 @@
 import { Navigate, Outlet, createBrowserRouter, useLocation } from 'react-router-dom';
 import AddDepartment from 'src/features/departments/components/AddDepartemnt';
+import ViewProjectDetails from 'src/features/projects/components/ViewProjectDetails';
 import { Team } from 'src/features/teams';
 import { AppLayout, AuthLayout } from 'src/layouts';
 import { OrganizationPage, AuthPages, DepartmentPage, ProjectsPage } from 'src/pages';
@@ -87,6 +88,23 @@ export const router = createBrowserRouter([
       {
         path: '',
         element: <AddTeamRole />,
+      },
+    ],
+  },
+  {
+    path: '/project-details',
+    element: (
+      <AuthGuard>
+        <AppLayout>
+          <Outlet />
+        </AppLayout>
+      </AuthGuard>
+    ),
+    errorElement: <>404</>,
+    children: [
+      {
+        path: '',
+        element: <ViewProjectDetails />,
       },
     ],
   },
