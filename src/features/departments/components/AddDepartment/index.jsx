@@ -1,7 +1,7 @@
 import { Button, Flex, Heading, Select } from '@chakra-ui/react';
 import Container from './index.styled';
 import { AddIcon } from '@chakra-ui/icons';
-import { Table } from 'src/common';
+import { TableComponent } from 'src/common';
 
 const AddDepartment = () => {
   return (
@@ -40,11 +40,11 @@ const AddDepartment = () => {
         <Heading fontSize={'14px'} color={'#4D5464'}>
           Current members
         </Heading>
-        <Table />
+        <TableComponent />
         <Heading fontSize={'14px'} color={'#4D5464'}>
           Assign members
         </Heading>
-        <Table />
+        <TableComponent />
         <Button bgColor={'#fff'} color={'#D0D5DD'} border={'1px solid #D0D5DD'} gap={'20px'}>
           <AddIcon />
           Add members
