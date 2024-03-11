@@ -1,1 +1,9 @@
-export { SignupForm, ForgotPasswordForm, LoginForm, ResetPaswordForm } from './auth-form';
+export {
+  SignupForm,
+  ForgotPasswordForm,
+  LoginForm,
+  ResetPaswordForm,
+  EmployeeSignUpForm,
+} from './auth-form';
+
+export { ProjectsMenu } from './projects';
