@@ -9,7 +9,7 @@ import AddTeamRole from 'src/pages/add-team-role';
 
 const AuthGuard = ({ children }) => {
   const isAuthorized = true;
-  const location = useLocation();
+  const location = useLocation('');
 
   if (!isAuthorized) return <Navigate to='auth/signup' state={{ from: location }} />;
   return children;
