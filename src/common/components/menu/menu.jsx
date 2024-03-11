@@ -1,6 +1,6 @@
 import Container from './index.styled';
 
-const Table = () => {
+const Menu = () => {
   return <Container>Template Component</Container>;
 };
-export default Table;
+export default Menu;
