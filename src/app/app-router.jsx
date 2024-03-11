@@ -1,6 +1,11 @@
 import { Navigate, Outlet, createBrowserRouter, useLocation } from 'react-router-dom';
+import { Team } from 'src/features/teams';
 import { AppLayout, AuthLayout } from 'src/layouts';
+
 import { OrganizationPage, AuthPages, DepartmentPage, ProjectsPage } from 'src/pages';
+import AddDepartment from 'src/pages/add-departments';
+import AddTeamRole from 'src/pages/add-team-role';
+
 
 const AuthGuard = ({ children }) => {
   const isAuthorized = true;
@@ -34,6 +39,57 @@ export const router = createBrowserRouter([
       { path: 'organization', element: <OrganizationPage /> },
       { path: 'departments', element: <DepartmentPage /> },
       { path: 'projects', element: <ProjectsPage /> },
+    ],
+  },
+  {
+    path: '/add-departments',
+    element: (
+      <AuthGuard>
+        <AppLayout>
+          <Outlet />
+        </AppLayout>
+      </AuthGuard>
+    ),
+    errorElement: <>404</>,
+    children: [
+      {
+        path: '',
+        element: <AddDepartment />,
+      },
+    ],
+  },
+  {
+    path: '/teams',
+    element: (
+      <AuthGuard>
+        <AppLayout>
+          <Outlet />
+        </AppLayout>
+      </AuthGuard>
+    ),
+    errorElement: <>404</>,
+    children: [
+      {
+        path: '',
+        element: <Team />,
+      },
+    ],
+  },
+  {
+    path: '/add-team-role',
+    element: (
+      <AuthGuard>
+        <AppLayout>
+          <Outlet />
+        </AppLayout>
+      </AuthGuard>
+    ),
+    errorElement: <>404</>,
+    children: [
+      {
+        path: '',
+        element: <AddTeamRole />,
+      },
     ],
   },
 ]);
