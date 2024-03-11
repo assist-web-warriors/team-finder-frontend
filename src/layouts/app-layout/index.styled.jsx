@@ -18,10 +18,9 @@ const Container = {
   `,
   Children: styled.span`
     display: flex;
-    align-items: center;
-    justify-content: center;
     width: calc(var(--layout) - var(--sidebar-size) - var(--layout-gap));
     padding-bottom: var(--layout-gap);
+    border-radius: 16px;
   `,
 };
 
