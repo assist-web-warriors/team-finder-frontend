@@ -5,6 +5,8 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   padding: 60px;
+  background-color: #fff;
+  border-radius: 16px;
 `;
 
 export default Container;

@@ -8,6 +8,7 @@ const Container = styled.div`
   background-color: #fff;
   width: 100%;
   height: 100%;
+  padding: 60px;
 `;
 
 export default Container;

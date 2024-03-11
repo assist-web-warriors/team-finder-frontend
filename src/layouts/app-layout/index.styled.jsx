@@ -20,7 +20,6 @@ const Container = {
     display: flex;
     width: calc(var(--layout) - var(--sidebar-size) - var(--layout-gap));
     padding-bottom: var(--layout-gap);
-    background-color: #fff;
     border-radius: 16px;
   `,
 };
