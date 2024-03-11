@@ -6,7 +6,6 @@ import { OrganizationPage, AuthPages, DepartmentPage, ProjectsPage } from 'src/p
 import AddDepartment from 'src/pages/add-departments';
 import AddTeamRole from 'src/pages/add-team-role';
 
-
 const AuthGuard = ({ children }) => {
   const isAuthorized = true;
   const location = useLocation();
