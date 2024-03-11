@@ -1,6 +1,14 @@
 import { Navigate, Outlet, createBrowserRouter, useLocation } from 'react-router-dom';
+import { Team } from 'src/features/teams';
 import { AppLayout, AuthLayout } from 'src/layouts';
-import { OrganizationPage, AuthPages, DepartmentPage } from 'src/pages';
+import {
+  OrganizationPage,
+  AuthPages,
+  DepartmentPage,
+  ProjectsPage,
+  AddDepartments,
+  AddTeamRole,
+} from 'src/pages';
 
 const AuthGuard = ({ children }) => {
   const isAuthorized = true;
@@ -14,29 +22,30 @@ export const router = createBrowserRouter([
   {
     path: 'auth',
     element: <AuthLayout />,
-    errorElement: <>404</>,
+    errorElement: <>404</>, // to do <AuthNotFound />
     children: [
       { path: '', element: <Navigate to='signup' /> },
       { path: '*', element: <AuthPages /> },
     ],
   },
   {
-    path: '/',
+    path: '',
     element: (
       <AuthGuard>
-        <Outlet />
+        <AppLayout>
+          <Outlet />
+        </AppLayout>
       </AuthGuard>
     ),
-    errorElement: <>404</>,
+    errorElement: <>404</>, // to do <AppNotFound />
     children: [
-      {
-        path: '',
-        element: <AppLayout></AppLayout>,
-      },
+      { path: 'organization', element: <OrganizationPage /> },
+      { path: 'departments', element: <DepartmentPage /> },
+      { path: 'projects', element: <ProjectsPage /> },
     ],
   },
   {
-    path: '/organization',
+    path: '/add-departments',
     element: (
       <AuthGuard>
         <AppLayout>
@@ -48,12 +57,12 @@ export const router = createBrowserRouter([
     children: [
       {
         path: '',
-        element: <OrganizationPage />,
+        element: <AddDepartments />,
       },
     ],
   },
   {
-    path: '/departments',
+    path: '/teams',
     element: (
       <AuthGuard>
         <AppLayout>
@@ -65,7 +74,24 @@ export const router = createBrowserRouter([
     children: [
       {
         path: '',
-        element: <DepartmentPage />,
+        element: <Team />,
+      },
+    ],
+  },
+  {
+    path: '/add-team-role',
+    element: (
+      <AuthGuard>
+        <AppLayout>
+          <Outlet />
+        </AppLayout>
+      </AuthGuard>
+    ),
+    errorElement: <>404</>,
+    children: [
+      {
+        path: '',
+        element: <AddTeamRole />,
       },
     ],
   },

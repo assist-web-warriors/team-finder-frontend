@@ -6,9 +6,6 @@ import {
   InputGroup,
   InputRightAddon,
   Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
   Select,
   Table,
   TableContainer,
@@ -19,9 +16,9 @@ import {
   Tr,
 } from '@chakra-ui/react';
 import Container from './index.styled';
-import MoreIcon from '../../assets/more-icon.svg?react';
-import { ArrowForwardIcon, ChevronDownIcon, CopyIcon } from '@chakra-ui/icons';
+import { ArrowForwardIcon, CopyIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
+import { MenuComponent } from 'src/common';
 
 const AddNewAdmin = () => {
   const [showInput, setShowInput] = useState(false);
@@ -39,15 +36,8 @@ const AddNewAdmin = () => {
 
   return (
     <Container>
-      <Flex
-        gap={'40px'}
-        direction={'column'}
-        justifyContent={'center'}
-        alignItems={'flex-start'}
-        marginLeft={'58px'}>
-        <Heading fontSize={'2xl'} marginTop={'40px'}>
-          Admin role assigments
-        </Heading>
+      <Flex gap={'40px'} direction={'column'}>
+        <Heading fontSize={'2xl'}>Admin role assigments</Heading>
         <Flex width={'90%'} justifyContent={'space-between'}>
           <Select
             width={'40%'}
@@ -62,8 +52,7 @@ const AddNewAdmin = () => {
             Save
           </Button>
         </Flex>
-
-        <TableContainer border={'2px solid #E2E8F0'} width={'90%'} borderRadius={'12px'}>
+        <TableContainer border={'2px solid #E2E8F0'} width={'100%'} borderRadius={'12px'}>
           <Table size='sm'>
             <Thead>
               <Tr height={'50px'}>
@@ -79,15 +68,7 @@ const AddNewAdmin = () => {
                 <Td>Admin</Td>
                 <Td>sage@chakra-ui.com</Td>
                 <Td cursor={'pointer'}>
-                  <Menu>
-                    <MenuButton>
-                      <MoreIcon />
-                    </MenuButton>
-                    <MenuList>
-                      <MenuItem>Delete</MenuItem>
-                      <MenuItem onClick={() => alert('Kagebunshin')}>Edit</MenuItem>
-                    </MenuList>
-                  </Menu>
+                  <MenuComponent />
                 </Td>
               </Tr>
               <Tr height={'50px'}>
@@ -95,22 +76,14 @@ const AddNewAdmin = () => {
                 <Td>Admin</Td>
                 <Td>sage@chakra-ui.com</Td>
                 <Td cursor={'pointer'}>
-                  <Menu>
-                    <MenuButton>
-                      <MoreIcon />
-                    </MenuButton>
-                    <MenuList>
-                      <MenuItem>Delete</MenuItem>
-                      <MenuItem onClick={() => alert('Kagebunshin')}>Edit</MenuItem>
-                    </MenuList>
-                  </Menu>
+                  <MenuComponent />
                 </Td>
               </Tr>
             </Tbody>
           </Table>
         </TableContainer>
       </Flex>
-      <Flex direction={'column'} marginLeft={'58px'} gap={'40px'}>
+      <Flex direction={'column'} gap={'40px'}>
         <Heading fontSize={'2xl'}>Invitation URL</Heading>
         <Button
           width={'150px'}
@@ -121,9 +94,8 @@ const AddNewAdmin = () => {
           Generate URL
         </Button>
       </Flex>
-
       {showInput && (
-        <Flex marginLeft={'58px'} direction={'column'} gap={'24px'} color={'#D0D5DD'}>
+        <Flex direction={'column'} gap={'24px'} color={'#D0D5DD'}>
           <InputGroup>
             <Input placeholder={generatedURL} width={'415px'}></Input>
             <InputRightAddon bgColor={'#fff'}>
