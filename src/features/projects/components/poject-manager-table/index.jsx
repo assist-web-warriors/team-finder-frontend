@@ -1,12 +1,10 @@
-import { CustomTable } from 'src/shared/ui/custom-table';
+import { UserTable } from 'src/shared/ui';
 import { Container } from './index.styled';
 
-const PojectManagerTable = ({ users, columnHeaders }) => {
+export const PojectManagerTable = ({ users, columnHeaders }) => {
   return (
     <Container>
-      <CustomTable users={users} columnHeaders={columnHeaders} />
+      <UserTable users={users} columnHeaders={columnHeaders} />
     </Container>
   );
 };
-
-export default PojectManagerTable;

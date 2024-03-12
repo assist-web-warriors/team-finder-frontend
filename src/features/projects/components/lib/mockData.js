@@ -12,5 +12,3 @@ export const users = [
     email: 'mark@chakra-ui.com',
   },
 ];
-
-export const headers = ['name', 'role', 'email', 'more'];

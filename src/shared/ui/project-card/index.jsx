@@ -8,9 +8,8 @@ import {
   Avatar,
   AvatarGroup,
 } from '@chakra-ui/react';
-import CustomDate from '../custom-date';
+import { CustomDate, CustomEditButton } from 'src/shared/ui';
 import { CardOption, TopContainer, BottomContainer } from './index.styled';
-import CustomEditButton from '../custom-edit-button';
 
 const ProjectCard = ({ project }) => {
   return (
@@ -21,10 +20,12 @@ const ProjectCard = ({ project }) => {
       shadow='none'
       borderRadius='12px'
       border='1px solid var(--grey-200, #e2e8f0)'>
-      <CardBody display='flex' flexDir='column' justifyContent='space-between'>
+      <CardBody>
         <TopContainer>
           <CardOption>
-            <Tag colorScheme='blue'>{project.status}</Tag>
+            <Tag colorScheme='blue' fontWeight='600' fontSize='12px'>
+              {project.status}
+            </Tag>
             <CustomEditButton />
           </CardOption>
 

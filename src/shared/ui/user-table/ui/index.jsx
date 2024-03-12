@@ -13,7 +13,7 @@ import {
 } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 
-const CustomTable = ({ users, columnHeaders }) => {
+const UserTable = ({ users, columnHeaders }) => {
   return (
     <TableContainer>
       <Table>
@@ -48,4 +48,4 @@ const CustomTable = ({ users, columnHeaders }) => {
   );
 };
 
-export default CustomTable;
+export default UserTable;

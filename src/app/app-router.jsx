@@ -1,10 +1,15 @@
 import { Navigate, Outlet, createBrowserRouter, useLocation } from 'react-router-dom';
-import AddDepartment from 'src/features/departments/components/AddDepartemnt';
 import ViewProjectDetails from 'src/features/projects/components/ViewProjectDetails';
-import { Team } from 'src/features/teams';
 import { AppLayout, AuthLayout } from 'src/layouts';
-import { OrganizationPage, AuthPages, DepartmentPage, ProjectsPage } from 'src/pages';
-import AddTeamRole from 'src/pages/add-team-role';
+import {
+  OrganizationPage,
+  AuthPages,
+  DepartmentPage,
+  ProjectsPage,
+  AddDepartment,
+  AddTeamRole,
+} from 'src/pages';
+import { Team } from 'src/features';
 
 const AuthGuard = ({ children }) => {
   const isAuthorized = true;
@@ -38,74 +43,10 @@ export const router = createBrowserRouter([
       { path: 'organization', element: <OrganizationPage /> },
       { path: 'departments', element: <DepartmentPage /> },
       { path: 'projects', element: <ProjectsPage /> },
-    ],
-  },
-  {
-    path: '/add-departments',
-    element: (
-      <AuthGuard>
-        <AppLayout>
-          <Outlet />
-        </AppLayout>
-      </AuthGuard>
-    ),
-    errorElement: <>404</>,
-    children: [
-      {
-        path: '',
-        element: <AddDepartment />,
-      },
-    ],
-  },
-  {
-    path: '/teams',
-    element: (
-      <AuthGuard>
-        <AppLayout>
-          <Outlet />
-        </AppLayout>
-      </AuthGuard>
-    ),
-    errorElement: <>404</>,
-    children: [
-      {
-        path: '',
-        element: <Team />,
-      },
-    ],
-  },
-  {
-    path: '/add-team-role',
-    element: (
-      <AuthGuard>
-        <AppLayout>
-          <Outlet />
-        </AppLayout>
-      </AuthGuard>
-    ),
-    errorElement: <>404</>,
-    children: [
-      {
-        path: '',
-        element: <AddTeamRole />,
-      },
-    ],
-  },
-  {
-    path: '/project-details',
-    element: (
-      <AuthGuard>
-        <AppLayout>
-          <Outlet />
-        </AppLayout>
-      </AuthGuard>
-    ),
-    errorElement: <>404</>,
-    children: [
-      {
-        path: '',
-        element: <ViewProjectDetails />,
-      },
+      { path: 'add-departments', element: <AddDepartment /> },
+      { path: 'teams', element: <Team /> },
+      { path: 'add-team-role', element: <AddTeamRole /> },
+      { path: 'project-details', element: <ViewProjectDetails /> },
     ],
   },
 ]);
