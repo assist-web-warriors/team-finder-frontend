@@ -6,9 +6,10 @@ import {
   AuthPages,
   DepartmentPage,
   ProjectsPage,
-  AddDepartment,
+  AddDepartments,
   AddTeamRole,
 } from 'src/pages';
+
 import { Team } from 'src/features';
 
 const AuthGuard = ({ children }) => {
@@ -43,7 +44,7 @@ export const router = createBrowserRouter([
       { path: 'organization', element: <OrganizationPage /> },
       { path: 'departments', element: <DepartmentPage /> },
       { path: 'projects', element: <ProjectsPage /> },
-      { path: 'add-departments', element: <AddDepartment /> },
+      { path: 'add-departments', element: <AddDepartments /> },
       { path: 'teams', element: <Team /> },
       { path: 'add-team-role', element: <AddTeamRole /> },
       { path: 'project-details', element: <ViewProjectDetails /> },

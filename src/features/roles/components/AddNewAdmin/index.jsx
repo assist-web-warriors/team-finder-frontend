@@ -6,9 +6,6 @@ import {
   InputGroup,
   InputRightAddon,
   Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
   Select,
   Table,
   TableContainer,
@@ -19,9 +16,9 @@ import {
   Tr,
 } from '@chakra-ui/react';
 import Container from './index.styled';
-import MoreIcon from '../../assets/more-icon.svg?react';
 import { ArrowForwardIcon, CopyIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
+import { MenuComponent } from 'src/common';
 
 const AddNewAdmin = () => {
   const [showInput, setShowInput] = useState(false);
@@ -71,15 +68,7 @@ const AddNewAdmin = () => {
                 <Td>Admin</Td>
                 <Td>sage@chakra-ui.com</Td>
                 <Td cursor={'pointer'}>
-                  <Menu>
-                    <MenuButton>
-                      <MoreIcon />
-                    </MenuButton>
-                    <MenuList>
-                      <MenuItem>Delete</MenuItem>
-                      <MenuItem onClick={() => alert('Kagebunshin')}>Edit</MenuItem>
-                    </MenuList>
-                  </Menu>
+                  <MenuComponent />
                 </Td>
               </Tr>
               <Tr height={'50px'}>
@@ -87,15 +76,7 @@ const AddNewAdmin = () => {
                 <Td>Admin</Td>
                 <Td>sage@chakra-ui.com</Td>
                 <Td cursor={'pointer'}>
-                  <Menu>
-                    <MenuButton>
-                      <MoreIcon />
-                    </MenuButton>
-                    <MenuList>
-                      <MenuItem>Delete</MenuItem>
-                      <MenuItem onClick={() => alert('Kagebunshin')}>Edit</MenuItem>
-                    </MenuList>
-                  </Menu>
+                  <MenuComponent />
                 </Td>
               </Tr>
             </Tbody>

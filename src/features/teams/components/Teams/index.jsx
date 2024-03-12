@@ -1,24 +1,7 @@
-import {
-  Button,
-  Flex,
-  Heading,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-  Table,
-  TableCaption,
-  TableContainer,
-  Tbody,
-  Td,
-  Tfoot,
-  Th,
-  Thead,
-  Tr,
-} from '@chakra-ui/react';
+import { Button, Flex, Heading } from '@chakra-ui/react';
 import Container from './index.styled';
 import { AddIcon } from '@chakra-ui/icons';
-import MoreIcon from '../../assets/more-icon.svg?react';
+import { TableComponent } from 'src/common';
 import { useState } from 'react';
 
 const Team = () => {
@@ -38,49 +21,7 @@ const Team = () => {
           Add Team Role
         </Button>
       </Flex>
-      <TableContainer border={'2px solid #E2E8F0'} width={'100%'} borderRadius={'12px'}>
-        <Table>
-          <Thead>
-            <Tr>
-              <Th>TEAM ROLES</Th>
-              <Th>ROLE DESCRIPTION</Th>
-              <Th>MORE</Th>
-            </Tr>
-          </Thead>
-          <Tbody>
-            <Tr>
-              <Td>Team Lead</Td>
-              <Td>Responsible for overseeing the team and coordinating efforts</Td>
-              <Td cursor={'pointer'}>
-                <Menu>
-                  <MenuButton>
-                    <MoreIcon />
-                  </MenuButton>
-                  <MenuList>
-                    <MenuItem>Delete</MenuItem>
-                    <MenuItem onClick={() => alert('Kagebunshin')}>Edit</MenuItem>
-                  </MenuList>
-                </Menu>
-              </Td>
-            </Tr>
-            <Tr>
-              <Td>Frontend Developer</Td>
-              <Td>Build and code the technical aspects of a project </Td>
-              <Td cursor={'pointer'}>
-                <Menu>
-                  <MenuButton>
-                    <MoreIcon />
-                  </MenuButton>
-                  <MenuList>
-                    <MenuItem>Delete</MenuItem>
-                    <MenuItem onClick={() => alert('Kagebunshin')}>Edit</MenuItem>
-                  </MenuList>
-                </Menu>
-              </Td>
-            </Tr>
-          </Tbody>
-        </Table>
-      </TableContainer>
+      <TableComponent />
     </Container>
   );
 };
