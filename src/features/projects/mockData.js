@@ -1,4 +1,4 @@
-export const mockData = [
+export const mockProjects = [
   {
     title: 'Health Tracker',
     description:
@@ -12,8 +12,8 @@ export const mockData = [
     description:
       'Fitness App is a user-friendly application that offers personalized workout plans and tracks fitness progress.',
     dueDate: 'Aug 15, 2024',
-    status: 'In Progress',
-    progress: '90',
+    status: 'Done',
+    progress: '100',
   },
   {
     title: 'Nutrition Planner',
