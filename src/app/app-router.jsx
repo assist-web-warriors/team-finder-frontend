@@ -11,6 +11,7 @@ import {
 } from 'src/pages';
 
 import { Team } from 'src/features';
+import ViewProfile from 'src/features/personal/components/ViewProfile';
 
 const AuthGuard = ({ children }) => {
   const isAuthorized = true;
@@ -48,6 +49,7 @@ export const router = createBrowserRouter([
       { path: 'teams', element: <Team /> },
       { path: 'add-team-role', element: <AddTeamRole /> },
       { path: 'project-details', element: <ViewProjectDetails /> },
+      { path: 'personal', element: <ViewProfile /> },
     ],
   },
 ]);
