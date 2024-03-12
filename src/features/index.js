@@ -7,3 +7,4 @@ export {
 } from './auth-form';
 
 export { ProjectsMenu } from './projects';
+export { Team } from './teams';

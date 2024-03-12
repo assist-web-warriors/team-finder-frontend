@@ -4,10 +4,10 @@ import { DateContainer } from './index.styled';
 const CustomDate = ({ dueDate }) => {
   return (
     <DateContainer>
-      <Text fontWeight='600' fontSize='15px'>
+      <Text fontWeight='600' fontSize='12px'>
         {dueDate}
       </Text>
-      <Text color='gray' fontSize='15px'>
+      <Text color='gray' fontSize='12px'>
         Due Date
       </Text>
     </DateContainer>
