@@ -1,12 +1,12 @@
 import { ProjectManagerAssignment, Projects } from '../components';
-import { mockData } from '../mockData';
+import { mockProjects } from '../mockData';
 import { Container } from './index.styled';
 
 const ProjectsMenu = () => {
   return (
     <Container>
       <ProjectManagerAssignment />
-      <Projects list={mockData} />
+      <Projects list={mockProjects} />
     </Container>
   );
 };
