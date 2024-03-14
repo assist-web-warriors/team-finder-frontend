@@ -5,6 +5,5 @@ export {
   ResetPaswordForm,
   EmployeeSignUpForm,
 } from './auth-form';
-
-export { ProjectsMenu } from './projects';
+export { ProjectsMenu, ViewProjectDetails, ProjectOptionButton } from './projects';
 export { Team } from './teams';

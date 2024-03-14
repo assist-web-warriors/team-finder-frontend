@@ -1,8 +1,5 @@
-import ViewProjectDetails from 'src/features/projects/components/ViewProjectDetails';
-import { TemplateComponent } from '../features/template-feature';
+import { ViewProjectDetails } from 'src/features';
 
-const ProjectsDetails = () => {
+export const ProjectDetails = () => {
   return <ViewProjectDetails />;
 };
-
-export default ProjectsDetails;
