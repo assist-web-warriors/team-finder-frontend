@@ -1,7 +1,10 @@
 export { default as CustomSelectOption } from './custom-select-option';
 export { default as PageTitle } from './page-title';
-export { default as ProjectCard } from './project-card';
+export { ProjectCard } from './project-card';
 export { default as CustomDate } from './custom-date';
-export { default as CustomEditButton } from './custom-edit-button';
+export { CustomOptionButton } from './custom-option-button';
 export { UserTable } from './user-table';
 export { ProjectsTable } from './projects-table';
+export { Modal } from './modal';
+export { Progress } from './progress/progress';
+export { AvatarGroup } from './avatar-group/ui/avatar-group';

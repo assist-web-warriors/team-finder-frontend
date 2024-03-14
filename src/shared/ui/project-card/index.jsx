@@ -1,17 +1,9 @@
-import {
-  Card,
-  Text,
-  CardBody,
-  Heading,
-  Tag,
-  Progress,
-  Avatar,
-  AvatarGroup,
-} from '@chakra-ui/react';
-import { CustomDate, CustomEditButton } from 'src/shared/ui';
+import { Card, Text, CardBody, Heading, Tag } from '@chakra-ui/react';
+import { CustomDate, Progress, AvatarGroup } from 'src/shared/ui';
+import { ProjectOptionButton } from 'src/features';
 import { CardOption, TopContainer, BottomContainer } from './index.styled';
 
-const ProjectCard = ({ project }) => {
+export const ProjectCard = ({ project, members }) => {
   return (
     <Card
       maxW='260px'
@@ -20,13 +12,13 @@ const ProjectCard = ({ project }) => {
       shadow='none'
       borderRadius='12px'
       border='1px solid var(--grey-200, #e2e8f0)'>
-      <CardBody>
+      <CardBody display='flex' flexDir='column' justifyContent='space-between'>
         <TopContainer>
           <CardOption>
             <Tag colorScheme='blue' fontWeight='600' fontSize='12px'>
               {project.status}
             </Tag>
-            <CustomEditButton />
+            <ProjectOptionButton project={project} />
           </CardOption>
 
           <Heading m='8px 0' fontSize='24px'>
@@ -40,32 +32,11 @@ const ProjectCard = ({ project }) => {
           </Text>
         </TopContainer>
         <BottomContainer>
-          <CustomDate dueDate={project.dueDate} />
-
-          <CardOption>
-            <Text fontWeight='600' fontSize='12px'>
-              Progress
-            </Text>
-            <Text fontWeight='600' fontSize='12px'>
-              {project.progress}%
-            </Text>
-          </CardOption>
-
-          <Progress
-            colorScheme='blue'
-            borderRadius='12px'
-            m='8px 0'
-            size='sm'
-            value={project.progress}
-          />
-          <AvatarGroup size='sm' max={2}>
-            <Avatar name='Ryan Florence' src='https://bit.ly/ryan-florence' />
-            <Avatar name='Segun Adebayo' src='https://bit.ly/sage-adebayo' />
-          </AvatarGroup>
+          <CustomDate date={project.endDate} description='Due Date' />
+          <Progress progress={project.progress} fontWeight='600' fontSize='12px' />
+          <AvatarGroup list={members} />
         </BottomContainer>
       </CardBody>
     </Card>
   );
 };
-
-export default ProjectCard;

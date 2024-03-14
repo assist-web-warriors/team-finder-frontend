@@ -19,7 +19,7 @@ const ProjectManagerAssignment = () => {
             border='1px solid #0356E8'
           />
         </SelectWrapper>
-        <PojectManagerTable users={users} columnHeaders={managerTableHeaders} />
+        <PojectManagerTable members={users} columnHeaders={managerTableHeaders} />
       </HeaderContainer>
     </Box>
   );

@@ -1,11 +1,11 @@
 import { Navigate, Outlet, createBrowserRouter, useLocation } from 'react-router-dom';
-import ViewProjectDetails from 'src/features/projects/components/ViewProjectDetails';
 import { AppLayout, AuthLayout } from 'src/layouts';
 import {
   OrganizationPage,
   AuthPages,
   DepartmentPage,
   ProjectsPage,
+  ProjectDetails,
   AddDepartment,
   AddTeamRole,
 } from 'src/pages';
@@ -43,10 +43,10 @@ export const router = createBrowserRouter([
       { path: 'organization', element: <OrganizationPage /> },
       { path: 'departments', element: <DepartmentPage /> },
       { path: 'projects', element: <ProjectsPage /> },
+      { path: 'project-details/:id', element: <ProjectDetails /> },
       { path: 'add-departments', element: <AddDepartment /> },
       { path: 'teams', element: <Team /> },
       { path: 'add-team-role', element: <AddTeamRole /> },
-      { path: 'project-details', element: <ViewProjectDetails /> },
     ],
   },
 ]);
