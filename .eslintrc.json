@@ -14,7 +14,7 @@
     "no-console": "off",
     "no-unused-vars": "off",
     "no-multiple-empty-lines": ["error", { "max": 2 }],
-    "no-relative-import-paths/no-relative-import-paths": "off",
-    "prettier/prettier": 0
+    "no-relative-import-paths/no-relative-import-paths": "off"
+    
   }
 }

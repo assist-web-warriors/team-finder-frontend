@@ -1,4 +1,4 @@
-import AddDepartment from 'src/features/departments/components/AddDepartemnt';
+import AddDepartment from '../features/departments/components/AddDepartment';
 
 const AddDepartments = () => {
   return <AddDepartment />;
