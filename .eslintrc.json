@@ -3,7 +3,7 @@
     "browser": true,
     "es2021": true
   },
-  "extends": ["react-app","plugin:prettier/recommended"],
+  "extends": ["react-app", "plugin:prettier/recommended"],
   "plugins": ["react", "prettier"],
   "rules": {
     "curly": ["off"],
@@ -12,9 +12,9 @@
     "react-hooks/exhaustive-deps": "off",
     "no-underscore-dangle": "off",
     "no-console": "off",
+    "prettier/prettier": 0,
     "no-unused-vars": "off",
     "no-multiple-empty-lines": ["error", { "max": 2 }],
     "no-relative-import-paths/no-relative-import-paths": "off"
-    
   }
 }
