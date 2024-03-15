@@ -4,7 +4,7 @@ export const userSlice = createSlice({
   name: 'user',
   initialState: { token: null, isAuthorized: false },
   reducers: {
-    setCredentials: (state, { payload: { token } }) => {
+    setUserData: (state, { payload: { token } }) => {
       state.token = token;
       state.isAuthorized = true;
     },
