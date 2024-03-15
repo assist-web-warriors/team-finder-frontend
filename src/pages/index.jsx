@@ -4,3 +4,5 @@ export { default as AuthPages } from './auth-pages';
 export { default as ProjectsPage } from './projects-page';
 export { default as AddDepartments } from './add-departments';
 export { default as AddTeamRole } from './add-team-role';
+export { ProjectDetails } from './project-details';
+export { default as SkillComponent } from './skills';

@@ -4,25 +4,29 @@ import { ProjectsFilter } from '../projects-filter';
 import { projectsTableHeaders } from '../lib';
 import { Box, ProjectsCardList, ProjectsTableContainer } from './index.styled';
 
-const Projects = ({ list }) => {
-  const [items, setItems] = useState(list || []);
-  const [mode, setMode] = useState('list');
-
+const Projects = ({ projects, members }) => {
+  const [items, setItems] = useState(projects || []);
+  const [mode, setMode] = useState('grid');
+  // TODO: filter members by project id
   return (
     <Box>
       <PageTitle title='Projects' />
-      <ProjectsFilter projects={list} setProjects={setItems} setDisplayMode={setMode} />
+      <ProjectsFilter projects={projects} setProjects={setItems} setDisplayMode={setMode} />
       {mode === 'grid' ? (
         <ProjectsCardList>
           {items &&
             items.map((project) => (
-              <ProjectCard project={project} mode='list' key={project.title} />
+              <ProjectCard project={project} members={members} mode='list' key={project.title} />
             ))}
         </ProjectsCardList>
       ) : (
         mode === 'list' && (
           <ProjectsTableContainer>
-            <ProjectsTable projects={items} columnHeaders={projectsTableHeaders} />
+            <ProjectsTable
+              projects={items}
+              members={members}
+              columnHeaders={projectsTableHeaders}
+            />
           </ProjectsTableContainer>
         )
       )}

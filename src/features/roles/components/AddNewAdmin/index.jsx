@@ -5,29 +5,16 @@ import {
   Input,
   InputGroup,
   InputRightAddon,
-  Menu,
   Select,
-  Table,
-  TableContainer,
-  Tbody,
-  Td,
-  Th,
-  Thead,
-  Tr,
 } from '@chakra-ui/react';
 import Container from './index.styled';
 import { ArrowForwardIcon, CopyIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
-import { MenuComponent } from 'src/common';
+import { TableComponent } from 'src/common';
 
 const AddNewAdmin = () => {
   const [showInput, setShowInput] = useState(false);
   const [generatedURL, setGeneratedURL] = useState('');
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const handleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
   const handleClick = () => {
     const generatedURL = 'https://www.youtube.com/watch?v=0s97B824Hec'; // Replace generateURL() with your own function
     setGeneratedURL(generatedURL);
@@ -52,36 +39,7 @@ const AddNewAdmin = () => {
             Save
           </Button>
         </Flex>
-        <TableContainer border={'2px solid #E2E8F0'} width={'100%'} borderRadius={'12px'}>
-          <Table size='sm'>
-            <Thead>
-              <Tr height={'50px'}>
-                <Th>NAME</Th>
-                <Th>ROLE</Th>
-                <Th>EMAIL</Th>
-                <Th>MORE</Th>
-              </Tr>
-            </Thead>
-            <Tbody>
-              <Tr height={'50px'}>
-                <Td>Segun Adebayo</Td>
-                <Td>Admin</Td>
-                <Td>sage@chakra-ui.com</Td>
-                <Td cursor={'pointer'}>
-                  <MenuComponent />
-                </Td>
-              </Tr>
-              <Tr height={'50px'}>
-                <Td>Mark Chandler</Td>
-                <Td>Admin</Td>
-                <Td>sage@chakra-ui.com</Td>
-                <Td cursor={'pointer'}>
-                  <MenuComponent />
-                </Td>
-              </Tr>
-            </Tbody>
-          </Table>
-        </TableContainer>
+        <TableComponent />
       </Flex>
       <Flex direction={'column'} gap={'40px'}>
         <Heading fontSize={'2xl'}>Invitation URL</Heading>

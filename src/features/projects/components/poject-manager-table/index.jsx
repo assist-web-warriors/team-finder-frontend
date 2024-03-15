@@ -1,10 +1,10 @@
 import { UserTable } from 'src/shared/ui';
 import { Container } from './index.styled';
 
-export const PojectManagerTable = ({ users, columnHeaders }) => {
+export const PojectManagerTable = ({ members, columnHeaders }) => {
   return (
     <Container>
-      <UserTable users={users} columnHeaders={columnHeaders} />
+      <UserTable users={members} columnHeaders={columnHeaders} />
     </Container>
   );
 };

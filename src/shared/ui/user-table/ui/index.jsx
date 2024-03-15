@@ -29,7 +29,7 @@ const UserTable = ({ users, columnHeaders }) => {
                 <Td>{user.name}</Td>
                 <Td>{user.role}</Td>
                 <Td>{user.email}</Td>
-                <Td cursor={'pointer'}>
+                <Td>
                   <Menu>
                     <MenuButton>
                       <HamburgerIcon />
