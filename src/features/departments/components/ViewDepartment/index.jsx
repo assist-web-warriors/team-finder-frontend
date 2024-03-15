@@ -1,17 +1,13 @@
 import { Button, Flex, Heading } from '@chakra-ui/react';
 import Container from './index.styled';
-import { useState } from 'react';
 import { AddIcon } from '@chakra-ui/icons';
-import { TableComponent } from 'src/common';
+import { Pagination, TableComponent } from 'src/common';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const ViewDepartment = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const handleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-  const handleClick = () => {
-    window.location.href = '/add-departments';
-  };
+  const store = useSelector((state) => state.department);
+  console.log(store);
 
   return (
     <Container>
@@ -19,10 +15,12 @@ const ViewDepartment = () => {
         <Heading fontSize={'2xl'} marginTop={'40px'}>
           Departments
         </Heading>
-        <Button color={'#fff'} bgColor={'#0356e8'} gap={'8px'} onClick={handleClick}>
-          <AddIcon />
-          Add New Departments
-        </Button>
+        <Link to={'/add-departments'}>
+          <Button color={'#fff'} bgColor={'#0356e8'} gap={'8px'}>
+            <AddIcon />
+            Add New Departments
+          </Button>
+        </Link>
         <TableComponent />
       </Flex>
     </Container>

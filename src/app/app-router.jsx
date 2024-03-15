@@ -50,6 +50,7 @@ export const router = createBrowserRouter([
       { path: 'teams', element: <Team /> },
       { path: 'add-team-role', element: <AddTeamRole /> },
       { path: 'personal', element: <ViewProfile /> },
+      { path: 'skills', element: '' },
     ],
   },
 ]);
