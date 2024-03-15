@@ -1,7 +1,5 @@
-import { Avatar } from '@chakra-ui/avatar';
 import Container from './index.styled';
-import { Input } from '@chakra-ui/input';
-import { Flex, Heading, Text } from '@chakra-ui/layout';
+import { Flex, Heading, Text, Input, Avatar } from '@chakra-ui/react';
 import { TableComponent } from 'src/common';
 
 const ViewProfile = () => {
