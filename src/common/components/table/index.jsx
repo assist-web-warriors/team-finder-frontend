@@ -1,4 +1,4 @@
-import { TableContainer, Tbody, Td, Th, Thead, Tr, Table } from '@chakra-ui/table';
+import { TableContainer, Tbody, Td, Th, Thead, Tr, Table } from '@chakra-ui/react';
 import Container from './index.styled';
 import { MenuComponent, Pagination } from 'src/common';
 

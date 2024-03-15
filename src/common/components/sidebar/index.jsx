@@ -2,7 +2,7 @@ import { Avatar, Button, Flex, Heading, Text, border } from '@chakra-ui/react';
 import Container from './index.styled';
 import CONSTANTS from 'src/common/constants';
 import { Link, useLocation } from 'react-router-dom';
-import { ExternalLinkIcon, SunIcon } from '@chakra-ui/icons';
+import { ExternalLinkIcon } from '@chakra-ui/icons';
 
 const Sidebar = () => {
   const location = useLocation();
