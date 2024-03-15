@@ -35,7 +35,7 @@ const SignupForm = () => {
   useEffect(() => {
     if (signupError) {
       toast({
-        title: `${signupError.data}`,
+        title: `${signupError.data.message}`,
         status: 'error',
         isClosable: true,
       });

@@ -29,7 +29,7 @@ const LoginForm = () => {
   useEffect(() => {
     if (loginError) {
       toast({
-        title: `${loginError.data}`,
+        title: `${loginError.data.message}`,
         status: 'error',
         isClosable: true,
       });
