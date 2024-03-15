@@ -1,6 +1,7 @@
 import { MenuButton, Menu, MenuItem, MenuList } from '@chakra-ui/menu';
 import Container from './index.styled';
 import MoreIcon from '../../assets/more-icon.svg?react';
+import DeleteModal from '../delete-modal';
 
 const MenuComponent = () => {
   return (
