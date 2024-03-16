@@ -1,6 +1,9 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Button, Text, Select } from '@chakra-ui/react';
+import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useSignupMutation } from 'src/entities/user/api/user-api';
+import { setUserData } from 'src/entities/user';
+import { Button, Text, Select, useToast } from '@chakra-ui/react';
 import { FormInput, PasswordInput, OrganizationOptions, FormTitle } from '../components';
 import { useFormValidation, signupSchema, signupAdminSchema } from '../lib';
 import { FormContainer, Paragraph, FormHeader, AuthContainer } from './index.styled';
@@ -11,7 +14,33 @@ const SignupForm = () => {
     selected === 'employee' ? signupSchema : signupSchema.concat(signupAdminSchema);
   const { handleSubmit, register, errors } = useFormValidation(selectedSchema);
 
-  const onSubmit = (values) => 'console.log(values)';
+  // TODO: refactor auth for org admin
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const toast = useToast();
+
+  const [registerUser, { error: signupError, isLoading }] = useSignupMutation();
+
+  const onSubmit = async ({ name, email, password }) => {
+    const request = { name, email, password };
+    const token = await registerUser(request).unwrap();
+
+    if (token) {
+      dispatch(setUserData({ token }));
+      navigate('/');
+    }
+  };
+
+  useEffect(() => {
+    if (signupError) {
+      toast({
+        title: `${signupError.data.message}`,
+        status: 'error',
+        isClosable: true,
+      });
+    }
+  }, [signupError, toast]);
 
   return (
     <AuthContainer>
@@ -54,7 +83,7 @@ const SignupForm = () => {
             {...register('password')}
           />
           {selected === 'admin' && <OrganizationOptions register={register} errors={errors} />}
-          <Button h='48px' mb='16px' colorScheme='blue' type='submit'>
+          <Button h='48px' mb='16px' colorScheme='blue' type='submit' isLoading={isLoading}>
             Sign up
           </Button>
           <Paragraph>

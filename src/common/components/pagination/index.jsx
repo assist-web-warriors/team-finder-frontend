@@ -51,5 +51,4 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     </Container>
   );
 };
-
 export default Pagination;

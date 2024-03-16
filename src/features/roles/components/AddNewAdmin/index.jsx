@@ -6,18 +6,11 @@ import {
   InputGroup,
   InputRightAddon,
   Select,
-  Table,
-  TableContainer,
-  Tbody,
-  Td,
-  Th,
-  Thead,
-  Tr,
 } from '@chakra-ui/react';
 import Container from './index.styled';
 import { ArrowForwardIcon, CopyIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
-import { Menu } from 'src/common';
+import { Table } from 'src/common';
 
 const AddNewAdmin = () => {
   const [showInput, setShowInput] = useState(false);
@@ -47,36 +40,7 @@ const AddNewAdmin = () => {
             Save
           </Button>
         </Flex>
-        <TableContainer border={'2px solid #E2E8F0'} width={'100%'} borderRadius={'12px'}>
-          <Table size='sm'>
-            <Thead>
-              <Tr height={'50px'}>
-                <Th>NAME</Th>
-                <Th>ROLE</Th>
-                <Th>EMAIL</Th>
-                <Th>MORE</Th>
-              </Tr>
-            </Thead>
-            <Tbody>
-              <Tr height={'50px'}>
-                <Td>Segun Adebayo</Td>
-                <Td>Admin</Td>
-                <Td>sage@chakra-ui.com</Td>
-                <Td cursor={'pointer'}>
-                  <Menu />
-                </Td>
-              </Tr>
-              <Tr height={'50px'}>
-                <Td>Mark Chandler</Td>
-                <Td>Admin</Td>
-                <Td>sage@chakra-ui.com</Td>
-                <Td cursor={'pointer'}>
-                  <Menu />
-                </Td>
-              </Tr>
-            </Tbody>
-          </Table>
-        </TableContainer>
+        <Table />
       </Flex>
       <Flex direction={'column'} gap={'40px'}>
         <Heading fontSize={'2xl'}>Invitation URL</Heading>

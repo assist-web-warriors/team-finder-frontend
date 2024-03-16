@@ -1,16 +1,17 @@
 import { Navigate, Outlet, createBrowserRouter, useLocation } from 'react-router-dom';
-import ViewProjectDetails from 'src/features/projects/components/ViewProjectDetails';
 import { AppLayout, AuthLayout } from 'src/layouts';
 import {
   OrganizationPage,
   AuthPages,
   DepartmentPage,
   ProjectsPage,
+  ProjectDetails,
   AddDepartments,
   AddTeamRole,
 } from 'src/pages';
 
 import { Team } from 'src/features';
+import ViewProfile from 'src/features/personal/components/ViewProfile';
 
 const AuthGuard = ({ children }) => {
   const isAuthorized = true;
@@ -44,10 +45,12 @@ export const router = createBrowserRouter([
       { path: 'organization', element: <OrganizationPage /> },
       { path: 'departments', element: <DepartmentPage /> },
       { path: 'projects', element: <ProjectsPage /> },
+      { path: 'project-details/:id', element: <ProjectDetails /> },
       { path: 'add-departments', element: <AddDepartments /> },
       { path: 'teams', element: <Team /> },
       { path: 'add-team-role', element: <AddTeamRole /> },
-      { path: 'project-details', element: <ViewProjectDetails /> },
+      { path: 'personal', element: <ViewProfile /> },
+      { path: 'skills', element: '' },
     ],
   },
 ]);

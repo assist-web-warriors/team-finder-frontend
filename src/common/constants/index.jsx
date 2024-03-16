@@ -1,4 +1,4 @@
-import { EditIcon, TimeIcon } from '@chakra-ui/icons';
+import { EditIcon, SunIcon, TimeIcon } from '@chakra-ui/icons';
 import DepartmentIcon from '../assets/department-icon.svg?react';
 import ProjectIcon from '../assets/project-icon.svg?react';
 import TaskIcon from '../assets/task-icon.svg?react';
@@ -35,6 +35,11 @@ const CONSTANTS = {
       NAME: 'Departments',
       URL: '/departments',
       ICON: <TaskIcon />,
+    },
+    SKILLS: {
+      NAME: 'Skills',
+      URL: '/skills',
+      ICON: <SunIcon />,
     },
     PERSONAL: {
       NAME: 'Personal',
