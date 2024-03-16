@@ -7,7 +7,7 @@ import { FormContainer, Paragraph, AuthContainer } from './index.styled';
 const EmployeeSignUpForm = () => {
   const { handleSubmit, register, errors } = useFormValidation(signupSchema);
 
-  const onSubmit = (values) => '';
+  const onSubmit = (values) => {};
 
   return (
     <AuthContainer>
