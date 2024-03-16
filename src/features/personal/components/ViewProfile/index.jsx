@@ -1,6 +1,6 @@
 import Container from './index.styled';
 import { Flex, Heading, Text, Input, Avatar } from '@chakra-ui/react';
-import { TableComponent } from 'src/common';
+import { Table } from 'src/common';
 
 const ViewProfile = () => {
   return (
@@ -39,7 +39,7 @@ const ViewProfile = () => {
         </Flex>
       </Flex>
       <Heading fontSize={'24px'}>Skills</Heading>
-      <TableComponent />
+      <Table />
     </Container>
   );
 };

@@ -1,16 +1,10 @@
 import { Button, Flex, Heading } from '@chakra-ui/react';
 import Container from './index.styled';
 import { AddIcon } from '@chakra-ui/icons';
-import { TableComponent } from 'src/common';
-import { useState } from 'react';
+import { Table } from 'src/common';
 import { Link } from 'react-router-dom';
 
 const Team = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const handleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
   return (
     <Container>
       <Flex width={'100%'} alignItems={'center'} justifyContent={'space-between'}>
@@ -22,7 +16,7 @@ const Team = () => {
           </Button>
         </Link>
       </Flex>
-      <TableComponent />
+      <Table />
     </Container>
   );
 };

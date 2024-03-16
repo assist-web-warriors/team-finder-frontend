@@ -10,11 +10,12 @@ import {
 import Container from './index.styled';
 import { ArrowForwardIcon, CopyIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
-import { TableComponent } from 'src/common';
+import { Table } from 'src/common';
 
 const AddNewAdmin = () => {
   const [showInput, setShowInput] = useState(false);
   const [generatedURL, setGeneratedURL] = useState('');
+
   const handleClick = () => {
     const generatedURL = 'https://www.youtube.com/watch?v=0s97B824Hec'; // Replace generateURL() with your own function
     setGeneratedURL(generatedURL);
@@ -39,7 +40,7 @@ const AddNewAdmin = () => {
             Save
           </Button>
         </Flex>
-        <TableComponent />
+        <Table />
       </Flex>
       <Flex direction={'column'} gap={'40px'}>
         <Heading fontSize={'2xl'}>Invitation URL</Heading>

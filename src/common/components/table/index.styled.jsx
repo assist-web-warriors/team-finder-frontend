@@ -4,9 +4,9 @@ const Container = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  justify-content: center;
+  gap: 20px;
   align-items: center;
+  justify-content: center;
 `;
 
 export default Container;

@@ -7,9 +7,7 @@ import { useFormValidation, resetPasswordSchema } from '../lib';
 const ResetPaswordForm = () => {
   const { handleSubmit, register, errors } = useFormValidation(resetPasswordSchema);
 
-  const onSubmit = (values) => {
-    console.log(values);
-  };
+  const onSubmit = (values) => {};
 
   return (
     <AuthContainer>

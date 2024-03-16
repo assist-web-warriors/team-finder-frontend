@@ -10,7 +10,6 @@ import {
   Heading,
   Progress,
   Table,
-  TableCaption,
   TableContainer,
   Tbody,
   Td,
