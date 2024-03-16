@@ -5,7 +5,6 @@ import {
   Input,
   InputGroup,
   InputRightAddon,
-  Menu,
   Select,
   Table,
   TableContainer,
@@ -18,15 +17,11 @@ import {
 import Container from './index.styled';
 import { ArrowForwardIcon, CopyIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
-import { MenuComponent } from 'src/common';
+import { Menu } from 'src/common';
 
 const AddNewAdmin = () => {
   const [showInput, setShowInput] = useState(false);
   const [generatedURL, setGeneratedURL] = useState('');
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const handleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
 
   const handleClick = () => {
     const generatedURL = 'https://www.youtube.com/watch?v=0s97B824Hec'; // Replace generateURL() with your own function
@@ -68,7 +63,7 @@ const AddNewAdmin = () => {
                 <Td>Admin</Td>
                 <Td>sage@chakra-ui.com</Td>
                 <Td cursor={'pointer'}>
-                  <MenuComponent />
+                  <Menu />
                 </Td>
               </Tr>
               <Tr height={'50px'}>
@@ -76,7 +71,7 @@ const AddNewAdmin = () => {
                 <Td>Admin</Td>
                 <Td>sage@chakra-ui.com</Td>
                 <Td cursor={'pointer'}>
-                  <MenuComponent />
+                  <Menu />
                 </Td>
               </Tr>
             </Tbody>

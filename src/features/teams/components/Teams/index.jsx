@@ -1,14 +1,9 @@
 import { Button, Flex, Heading } from '@chakra-ui/react';
 import Container from './index.styled';
 import { AddIcon } from '@chakra-ui/icons';
-import { TableComponent } from 'src/common';
-import { useState } from 'react';
+import { Table } from 'src/common';
 
 const Team = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const handleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
   const handleClick = () => {
     window.location.href = '/add-team-role';
   };
@@ -21,7 +16,7 @@ const Team = () => {
           Add Team Role
         </Button>
       </Flex>
-      <TableComponent />
+      <Table />
     </Container>
   );
 };

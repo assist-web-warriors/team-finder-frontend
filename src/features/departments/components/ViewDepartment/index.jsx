@@ -1,17 +1,92 @@
 import { Button, Flex, Heading } from '@chakra-ui/react';
 import Container from './index.styled';
-import { useState } from 'react';
 import { AddIcon } from '@chakra-ui/icons';
-import { TableComponent } from 'src/common';
+import { Table } from 'src/common';
+import CONSTANTS from '../../constants';
 
 const ViewDepartment = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const handleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
   const handleClick = () => {
     window.location.href = '/add-departments';
   };
+
+  // should come from store
+  const data = [
+    {
+      name: 'FrontEnd',
+      manager: 'Alexandru Larion',
+      users: [{ name: 'Jhon Doe', avatarUrl: '...' }],
+    },
+    {
+      name: 'FrontEnd',
+      manager: 'Alexandru Larion',
+      users: [{ name: 'Jhon Doe', avatarUrl: '...' }],
+    },
+    {
+      name: 'FrontEnd',
+      manager: 'Alexandru Larion',
+      users: [{ name: 'Jhon Doe', avatarUrl: '...' }],
+    },
+    {
+      name: 'FrontEnd',
+      manager: 'Alexandru Larion',
+      users: [{ name: 'Jhon Doe', avatarUrl: '...' }],
+    },
+    {
+      name: 'FrontEnd',
+      manager: 'Alexandru Larion',
+      users: [{ name: 'Jhon Doe', avatarUrl: '...' }],
+    },
+    {
+      name: 'FrontEnd',
+      manager: 'Alexandru Larion',
+      users: [{ name: 'Jhon Doe', avatarUrl: '...' }],
+    },
+    {
+      name: 'FrontEnd',
+      manager: 'Alexandru Larion',
+      users: [{ name: 'Jhon Doe', avatarUrl: '...' }],
+    },
+    {
+      name: 'FrontEnd',
+      manager: 'Alexandru Larion',
+      users: [{ name: 'Jhon Doe', avatarUrl: '...' }],
+    },
+    {
+      name: 'BackEnd',
+      manager: 'Ana-Maria Larion',
+      users: [{ name: 'Jhon Doe', avatarUrl: '...' }],
+    },
+    {
+      name: 'BackEnd',
+      manager: 'Ana-Maria Larion',
+      users: [{ name: 'Jhon Doe', avatarUrl: '...' }],
+    },
+    {
+      name: 'BackEnd',
+      manager: 'Ana-Maria Larion',
+      users: [{ name: 'Jhon Doe', avatarUrl: '...' }],
+    },
+    {
+      name: 'BackEnd',
+      manager: 'Ana-Maria Larion',
+      users: [{ name: 'Jhon Doe', avatarUrl: '...' }],
+    },
+    {
+      name: 'BackEnd',
+      manager: 'Ana-Maria Larion',
+      users: [{ name: 'Jhon Doe', avatarUrl: '...' }],
+    },
+    {
+      name: 'BackEnd',
+      manager: 'Ana-Maria Larion',
+      users: [{ name: 'Jhon Doe', avatarUrl: '...' }],
+    },
+    {
+      name: 'BackEnd',
+      manager: 'Ana-Maria Larion',
+      users: [{ name: 'Jhon Doe', avatarUrl: '...' }],
+    },
+  ];
 
   return (
     <Container>
@@ -23,7 +98,7 @@ const ViewDepartment = () => {
           <AddIcon />
           Add New Departments
         </Button>
-        <TableComponent />
+        <Table columns={CONSTANTS.TABLES.VIEW_COLUMNS} data={data} />
       </Flex>
     </Container>
   );

@@ -1,12 +1,4 @@
-import {
-  Avatar,
-  Flex,
-  Icon,
-  Input,
-  InputGroup,
-  InputRightAddon,
-  InputRightElement,
-} from '@chakra-ui/react';
+import { Avatar, Flex, Input, InputGroup, InputRightAddon } from '@chakra-ui/react';
 import Container from './index.styled';
 import { Link } from 'react-router-dom';
 import CONSTANTS from 'src/common/constants';

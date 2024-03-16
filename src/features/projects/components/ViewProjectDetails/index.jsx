@@ -1,6 +1,5 @@
-import { Flex, Heading, Icon, IconButton, ListIcon } from '@chakra-ui/react';
+import { Flex, Heading, Icon } from '@chakra-ui/react';
 import Container from './index.styled';
-import { CalendarIcon } from '@chakra-ui/icons';
 import CONSTANTS from 'src/common/constants';
 
 const ViewProjectDetails = () => {

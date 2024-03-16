@@ -1,50 +1,76 @@
-import {
-  TableCaption,
-  TableContainer,
-  Tbody,
-  Td,
-  Tfoot,
-  Th,
-  Thead,
-  Tr,
-  Table,
-} from '@chakra-ui/table';
+import { TableContainer, Tbody, Td, Th, Thead, Tr, Table as ChakraTable } from '@chakra-ui/react';
 import Container from './index.styled';
-import { MenuComponent } from 'src/common';
+import React from 'react';
+import {
+  flexRender,
+  getCoreRowModel,
+  getFilteredRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+  useReactTable,
+} from '@tanstack/react-table';
 
-const TableComponent = () => {
+import Pagination from '../pagination';
+
+const TableComponent = ({ data, columns }) => {
+  const [pagination, setPagination] = React.useState({
+    pageIndex: 0,
+    pageSize: 7,
+  });
+
+  const table = useReactTable({
+    columns,
+    data,
+    debugTable: true,
+    getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    onPaginationChange: setPagination,
+    state: {
+      pagination,
+    },
+  });
+
   return (
     <Container>
-      <TableContainer border={'2px solid #E2E8F0'} width={'100%'} borderRadius={'12px'}>
-        <Table size='sm'>
+      <TableContainer border={'1px solid #E2E8F0'} borderRadius={'12px'} width={'100%'}>
+        <ChakraTable width={'100%'}>
           <Thead>
-            <Tr height={'50px'}>
-              <Th>NAME</Th>
-              <Th>ROLE</Th>
-              <Th>EMAIL</Th>
-              <Th>MORE</Th>
-            </Tr>
+            {table.getHeaderGroups().map((headerGroup) => (
+              <Tr key={headerGroup.id}>
+                {headerGroup.headers.map((header) => (
+                  <Th key={header.id}>
+                    {header.isPlaceholder
+                      ? null
+                      : flexRender(header.column.columnDef.header, header.getContext())}
+                  </Th>
+                ))}
+              </Tr>
+            ))}
           </Thead>
           <Tbody>
-            <Tr height={'50px'}>
-              <Td>Segun Adebayo</Td>
-              <Td>Admin</Td>
-              <Td>sage@chakra-ui.com</Td>
-              <Td cursor={'pointer'}>
-                <MenuComponent />
-              </Td>
-            </Tr>
-            <Tr height={'50px'}>
-              <Td>Mark Chandler</Td>
-              <Td>Admin</Td>
-              <Td>sage@chakra-ui.com</Td>
-              <Td cursor={'pointer'}>
-                <MenuComponent />
-              </Td>
-            </Tr>
+            {table.getRowModel().rows.map((row) => {
+              return (
+                <Tr key={row.id}>
+                  {row.getVisibleCells().map((cell) => {
+                    return (
+                      <Td key={cell.id}>
+                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                      </Td>
+                    );
+                  })}
+                </Tr>
+              );
+            })}
           </Tbody>
-        </Table>
+        </ChakraTable>
       </TableContainer>
+      <Pagination
+        currentPage={pagination.pageIndex}
+        totalPages={table.getPageCount()}
+        onPageChange={(page) => table.setPageIndex(page)}
+      />
     </Container>
   );
 };
