@@ -11,7 +11,7 @@ const SignupForm = () => {
     selected === 'employee' ? signupSchema : signupSchema.concat(signupAdminSchema);
   const { handleSubmit, register, errors } = useFormValidation(selectedSchema);
 
-  const onSubmit = (values) => console.log(values);
+  const onSubmit = (values) => 'console.log(values)';
 
   return (
     <AuthContainer>

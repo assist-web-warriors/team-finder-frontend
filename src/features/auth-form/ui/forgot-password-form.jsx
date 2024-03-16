@@ -9,7 +9,7 @@ const ForgotPasswordForm = () => {
   const navigate = useNavigate();
 
   const onSubmit = (values) => {
-    console.log(values);
+    ' console.log(values);';
 
     navigate('/auth/reset-password');
   };

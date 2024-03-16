@@ -7,7 +7,7 @@ import { useFormValidation, loginSchema } from '../lib';
 const LoginForm = () => {
   const { handleSubmit, register, errors } = useFormValidation(loginSchema);
 
-  const onSubmit = (values) => console.log(values);
+  const onSubmit = (values) => 'console.log(values)';
 
   return (
     <AuthContainer>

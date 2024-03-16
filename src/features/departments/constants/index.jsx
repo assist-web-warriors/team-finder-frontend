@@ -26,10 +26,10 @@ const CONSTANTS = {
         cell: (cell) => (
           <Menu
             editProps={{
-              onClick: (e) => console.log('edit button', cell.row.original),
+              onClick: (e) => '',
             }}
             deleteProps={{
-              onClick: (e) => console.log('delete button', cell.row.original),
+              onClick: (e) => '',
             }}
           />
         ),
