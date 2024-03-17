@@ -49,6 +49,7 @@ const Sidebar = () => {
         padding={'24px'}>
         {constants.map((value, index) => (
           <Flex
+            alignItems={'center'}
             borderLeft={location.pathname === value.URL ? '3px #0356E8 solid' : ''}
             padding={'3px'}
             gap={'8px'}>

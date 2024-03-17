@@ -3,8 +3,15 @@ import Container from './index.styled';
 import { AddIcon } from '@chakra-ui/icons';
 import { Table } from 'src/common';
 import { Link } from 'react-router-dom';
+import CONSTANTS from '../../constants';
 
 const Team = () => {
+  const data = [
+    {
+      role: 'Team Lead',
+      description: 'Responsible for overseeing and coordinating efforts',
+    },
+  ];
   return (
     <Container>
       <Flex width={'100%'} alignItems={'center'} justifyContent={'space-between'}>
@@ -16,7 +23,7 @@ const Team = () => {
           </Button>
         </Link>
       </Flex>
-      <Table />
+      <Table columns={CONSTANTS.TABLE.TEAMS} data={data} />
     </Container>
   );
 };
