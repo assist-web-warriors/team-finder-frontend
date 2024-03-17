@@ -18,10 +18,10 @@ const LoginForm = () => {
 
   const onSubmit = async ({ email, password }) => {
     const request = { email, password };
-    const token = await loginUser(request).unwrap();
+    const { token, roles } = await loginUser(request).unwrap();
 
     if (token) {
-      dispatch(setUserData({ token }));
+      dispatch(setUserData({ token, roles }));
       navigate('/');
     }
   };

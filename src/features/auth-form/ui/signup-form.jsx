@@ -24,10 +24,10 @@ const SignupForm = () => {
 
   const onSubmit = async ({ name, email, password }) => {
     const request = { name, email, password };
-    const token = await registerUser(request).unwrap();
+    const { token, roles } = await registerUser(request).unwrap();
 
     if (token) {
-      dispatch(setUserData({ token }));
+      dispatch(setUserData({ token, roles }));
       navigate('/');
     }
   };

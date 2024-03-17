@@ -1,4 +1,5 @@
 import { Navigate, Outlet, createBrowserRouter, useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { AppLayout, AuthLayout } from 'src/layouts';
 import {
   OrganizationPage,
@@ -12,9 +13,10 @@ import {
 
 import { Team } from 'src/features';
 import ViewProfile from 'src/features/personal/components/ViewProfile';
+import { selectUserData } from 'src/entities/user';
 
 const AuthGuard = ({ children }) => {
-  const isAuthorized = true;
+  const { isAuthorized } = useSelector(selectUserData);
   const location = useLocation();
 
   if (!isAuthorized) return <Navigate to='auth/signup' state={{ from: location }} />;
