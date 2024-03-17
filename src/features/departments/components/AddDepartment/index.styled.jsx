@@ -10,6 +10,11 @@ const Container = styled.div`
   height: 100%;
   padding: 35px;
   border-radius: 16px;
+  form {
+    display: flex;
+    gap: 24px;
+    width: 100%;
+  }
 `;
 
 export default Container;

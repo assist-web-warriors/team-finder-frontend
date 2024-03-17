@@ -11,7 +11,7 @@ import Container from './index.styled';
 import { ArrowForwardIcon, CopyIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
 import { Table } from 'src/common';
-
+import CONSTANTS from '../../constants';
 const AddNewAdmin = () => {
   const [showInput, setShowInput] = useState(false);
   const [generatedURL, setGeneratedURL] = useState('');
@@ -21,6 +21,21 @@ const AddNewAdmin = () => {
     setGeneratedURL(generatedURL);
     setShowInput(true);
   };
+
+  const data = [
+    {
+      name: 'Segun Adebayo',
+      role: 'FrontEnd',
+      email: 'segunadebayo@yahoo.com',
+      more: '',
+    },
+    {
+      name: 'Segun Adebayo',
+      role: 'FrontEnd',
+      email: 'segunadebayo@yahoo.com',
+      more: '',
+    },
+  ];
 
   return (
     <Container>
@@ -40,7 +55,7 @@ const AddNewAdmin = () => {
             Save
           </Button>
         </Flex>
-        <Table />
+        <Table columns={CONSTANTS.TABLE.ADD_ADMIN} data={data} />
       </Flex>
       <Flex direction={'column'} gap={'40px'}>
         <Heading fontSize={'2xl'}>Invitation URL</Heading>
