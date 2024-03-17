@@ -9,7 +9,7 @@ const useConstants = () => {
 
   const handleEdit = React.useCallback(
     (data) => {
-      console.log(data.row.original);
+      // console.log(data.row.original);
       // TODO: call the fetch function from useEditDepartmentMutation hook
       dispatch(editDepartmentItem(data.row.original));
     },
@@ -18,7 +18,7 @@ const useConstants = () => {
 
   const handleDelete = React.useCallback(
     (data) => {
-      console.log(data.row.original);
+      // console.log(data.row.original);
       // TODO: call the fetch function from useDeleteDepartmentMutation hook
       dispatch(deleteDepartmentItem(data.row.original.id));
     },
