@@ -7,74 +7,111 @@ import {
   FormLabel,
   Heading,
   Select,
+  useToast,
 } from '@chakra-ui/react';
 import Container from './index.styled';
 import { AddIcon } from '@chakra-ui/icons';
 import { Table } from 'src/common';
-import CONSTANTS from '../../constants';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
-import { addDepartmentItem } from 'src/entities/department';
+import { useDispatch, useSelector } from 'react-redux';
+import { addDepartmentItem, useAddDepartmentMutation } from 'src/entities/department';
+import { useAddColumns } from '../../hooks';
+import { useCallback, useEffect } from 'react';
+import { setManagersItems } from 'src/entities/user/model/user-slice';
+import { useGetManagersMutation } from 'src/entities/user/api/user-api';
+
+const data = [
+  {
+    id: 1,
+    users: <Checkbox>Segun Adebayo</Checkbox>,
+    roles: 'FrontEnd',
+    email: 'mark@chakra-ui.com',
+    experience: '1.5years',
+  },
+  {
+    id: 2,
+    users: <Checkbox>Segun Adebayo</Checkbox>,
+    roles: 'FrontEnd',
+    email: 'mark@chakra-ui.com',
+    experience: '1.5years',
+  },
+  {
+    id: 3,
+    users: <Checkbox>Segun Adebayo</Checkbox>,
+    roles: 'FrontEnd',
+    email: 'mark@chakra-ui.com',
+    experience: '1.5years',
+  },
+  {
+    id: 4,
+    users: <Checkbox>Segun Adebayo</Checkbox>,
+    roles: 'FrontEnd',
+    email: 'mark@chakra-ui.com',
+    experience: '1.5years',
+  },
+  {
+    id: 4,
+    users: <Checkbox>Segun Adebayo</Checkbox>,
+    roles: 'FrontEnd',
+    email: 'mark@chakra-ui.com',
+    experience: '1.5years',
+  },
+];
 
 const AddDepartment = () => {
-  const data = [
-    {
-      id: 1,
-      users: <Checkbox>Segun Adebayo</Checkbox>,
-      roles: 'FrontEnd',
-      email: 'mark@chakra-ui.com',
-      experience: '1.5years',
-    },
-    {
-      id: 2,
-      users: <Checkbox>Segun Adebayo</Checkbox>,
-      roles: 'FrontEnd',
-      email: 'mark@chakra-ui.com',
-      experience: '1.5years',
-    },
-    {
-      id: 3,
-      users: <Checkbox>Segun Adebayo</Checkbox>,
-      roles: 'FrontEnd',
-      email: 'mark@chakra-ui.com',
-      experience: '1.5years',
-    },
-    {
-      id: 4,
-      users: <Checkbox>Segun Adebayo</Checkbox>,
-      roles: 'FrontEnd',
-      email: 'mark@chakra-ui.com',
-      experience: '1.5years',
-    },
-    {
-      id: 4,
-      users: <Checkbox>Segun Adebayo</Checkbox>,
-      roles: 'FrontEnd',
-      email: 'mark@chakra-ui.com',
-      experience: '1.5years',
-    },
-  ];
-
+  const toast = useToast();
+  const columns = useAddColumns();
   const dispatch = useDispatch();
+  const managers = useSelector((store) => store.user.managers);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    // TODO: call fetch function from useAddDepartmentMutation hook outside the onSubmit
-    // dispatch action to update store
+  const [getManagersFetch] = useGetManagersMutation();
+  const [addDepartmentFetch, { isLoading, isSuccess, isError }] = useAddDepartmentMutation();
+
+  const onSubmit = async (data) => {
+    const result = await addDepartmentFetch({ name: data.name, manager: data.manager }).unwrap();
     dispatch(
       addDepartmentItem({
-        id: 11,
-        name: data.name,
-        manager: data.manager,
+        id: result.id,
+        name: result.name,
+        manager: result.manager,
         users: [{ name: 'Jhon Doe', url: '' }],
       }),
     );
   };
 
+  const getManagers = useCallback(async () => {
+    const result = await getManagersFetch().unwrap();
+    dispatch(setManagersItems(result));
+  }, [dispatch, getManagersFetch]);
+
+  useEffect(() => {
+    getManagers();
+  }, [getManagers]);
+
+  useEffect(() => {
+    if (isError) {
+      toast({
+        title: 'Something went wrong.',
+        status: 'error',
+        isClosable: true,
+      });
+    }
+  }, [isError, toast]);
+
+  useEffect(() => {
+    if (isSuccess) {
+      toast({
+        title: 'The department was added succesfully.',
+        status: 'success',
+        isClosable: true,
+      });
+    }
+  }, [isSuccess, toast]);
   return (
     <Container>
       <Flex gap={'20px'} direction={'column'} justifyContent={'center'} alignItems={'flex-start'}>
@@ -94,6 +131,7 @@ const AddDepartment = () => {
               Cancel
             </Button>
             <Button
+              isLoading={isLoading}
               bgColor={true ? '#0356E8' : '#fff'}
               form='department_form'
               _hover={{
@@ -121,9 +159,9 @@ const AddDepartment = () => {
               width={'100%'}
               border={'2px solid #D0D5DD'}>
               <option value=''>Select a department</option>
-              <option value='manager1'>FrontEnd</option>
-              <option value='manager2'>BackEnd</option>
-              <option value='manager3'>UI/UX</option>
+              <option value='FrontEnd'>FrontEnd</option>
+              <option value='BackEnd'>BackEnd</option>
+              <option value='UI/UX'>UI/UX</option>
             </Select>
             <FormErrorMessage>{errors.name && 'Please select a option'}</FormErrorMessage>
           </FormControl>
@@ -138,9 +176,7 @@ const AddDepartment = () => {
               width={'100%'}
               border={'2px solid #D0D5DD'}>
               <option value=''>Select a manager</option>
-              <option value='manager1'>Manager 1</option>
-              <option value='manager2'>Manager 2</option>
-              <option value='manager3'>Manager 3</option>
+              <option value='13'>Motco Adriana</option>
             </Select>
             <FormErrorMessage>{errors.manager && 'Please select a option'}</FormErrorMessage>
           </FormControl>
@@ -154,7 +190,7 @@ const AddDepartment = () => {
             Add members
           </Button>
         </Flex>
-        <Table columns={CONSTANTS.TABLES.ADD_DEPARTMENTS} data={data} />
+        <Table columns={columns} data={data} />
       </Flex>
     </Container>
   );

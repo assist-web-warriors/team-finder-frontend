@@ -17,12 +17,12 @@ const Home = () => {
         <Flex gap={'25px'}>
           <Link to='/auth/signup'>
             <Button bgColor={'#fff'} color={'#0356E8'} border={'1px solid #0356E8'}>
-              SignUp
+              Sign Up
             </Button>
           </Link>
           <Link to='/auth/login'>
             <Button bgColor={'#0356E8'} color={'#fff'}>
-              SingIn
+              Sign In
             </Button>
           </Link>
         </Flex>

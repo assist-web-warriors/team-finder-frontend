@@ -3,10 +3,12 @@ import Container from './index.styled';
 import CONSTANTS from 'src/common/constants';
 import { Link, useLocation } from 'react-router-dom';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
+import { useSelector } from 'react-redux';
 
 const Sidebar = () => {
   const location = useLocation();
   const constants = Object.values(CONSTANTS.SIDEBAR_PAGES);
+  const user = useSelector((store) => store.user);
   return (
     <Container>
       <Flex
@@ -28,7 +30,7 @@ const Sidebar = () => {
             <Heading color={'black'} fontSize={'lg'}>
               Sam Smitch
             </Heading>
-            <Text fontSize='xs'>user@yahoo.com</Text>
+            <Text fontSize='xs'>{user.name}</Text>
           </Flex>
           <Button width={'147px'} height={'32px'} fontSize={'xs'} textAlign={'center'}>
             View Profile

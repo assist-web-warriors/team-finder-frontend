@@ -23,7 +23,8 @@ const CONSTANTS = {
     DEPARTMENTS: '/departments',
     PROJECTS: '/projects',
     SKILS: '/skills',
-    HOME: '/',
+    PERSONAL: '/personal',
+    WELCOME: '/',
   },
   SIDEBAR_PAGES: {
     ORGANIZATION: {
@@ -58,14 +59,6 @@ const CONSTANTS = {
     },
   },
   NAVIGATION_PAGES: {
-    HOME: {
-      NAME: 'Home',
-      URL: '/',
-    },
-    ADDITIONAL_CONTEXT: {
-      NAME: 'Additional Contex',
-      URL: '/additional-contex',
-    },
     NOTIFICATION: {
       NAME: 'Notification',
       URL: '/notification',

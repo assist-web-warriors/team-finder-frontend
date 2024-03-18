@@ -2,12 +2,11 @@ import { Button, Flex, Heading } from '@chakra-ui/react';
 import Container from './index.styled';
 import { AddIcon } from '@chakra-ui/icons';
 import { Table } from 'src/common';
-
 import { Link } from 'react-router-dom';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setDepartmentItems } from 'src/entities/department';
-import useConstants from '../../constants';
+import { useViewColumns } from '../../hooks';
 
 const mockData = [
   {
@@ -75,7 +74,7 @@ const mockData = [
 const ViewDepartment = () => {
   const dispatch = useDispatch();
   const department = useSelector((store) => store.department);
-  const CONSTANTS = useConstants();
+  const columns = useViewColumns();
 
   React.useEffect(() => {
     // TODO: mockData should come from useDepartmentMutation hook from department-api
@@ -93,7 +92,7 @@ const ViewDepartment = () => {
             Add New Departments
           </Button>
         </Link>
-        <Table columns={CONSTANTS.TABLES.VIEW_COLUMNS} data={department.items} />
+        <Table columns={columns} data={department.items} />
       </Flex>
     </Container>
   );

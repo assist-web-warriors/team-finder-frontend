@@ -7,6 +7,7 @@ import { Button, Text, useToast } from '@chakra-ui/react';
 import { FormInput, PasswordInput, FormTitle, LoginOptions } from '../components';
 import { FormContainer, Paragraph, AuthContainer } from './index.styled';
 import { useFormValidation, loginSchema } from '../lib';
+import CONSTANTS from 'src/common/constants';
 
 const LoginForm = () => {
   const { handleSubmit, register, errors } = useFormValidation(loginSchema);
@@ -22,7 +23,7 @@ const LoginForm = () => {
 
     if (token) {
       dispatch(setUserData({ token, roles }));
-      navigate('/');
+      navigate(CONSTANTS.PAGES.PERSONAL);
     }
   };
 
