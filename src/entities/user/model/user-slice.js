@@ -7,23 +7,29 @@ export const userSlice = createSlice({
       token: null,
       isAuthorized: false,
       roles: [],
+      name: '',
+      email: '',
     },
     managers: [],
   },
   reducers: {
-    setUserData: (state, { payload: { token, roles } }) => {
+    setUserData: (state, { payload: { token, roles, name, email } }) => {
       state.session = {};
       state.session.token = token;
       state.session.roles = roles;
+      state.session.name = name;
+      state.session.email = email;
       state.session.isAuthorized = true;
     },
     clearUserData: (state) => {
       state.session.token = null;
       state.session.roles = null;
+      state.session.name = '';
+      state.session.email = '';
       state.session.isAuthorized = false;
     },
     setManagersItems: (state, { payload }) => {
-      state.managers = [...state.managers, payload];
+      state.managers = payload;
     },
   },
 });

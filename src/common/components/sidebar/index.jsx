@@ -9,6 +9,7 @@ const Sidebar = () => {
   const location = useLocation();
   const constants = Object.values(CONSTANTS.SIDEBAR_PAGES);
   const user = useSelector((store) => store.user);
+
   return (
     <Container>
       <Flex
@@ -19,18 +20,13 @@ const Sidebar = () => {
         direction={'column'}
         padding={'20px'}
         borderRadius={'16px'}>
-        <Avatar
-          name='Segun Adebayo'
-          src='https://bit.ly/sage-adebayo'
-          size={'xl'}
-          marginTop={'calc(2rem * -1)'}
-        />
+        <Avatar name={user.session.name} size={'xl'} marginTop={'calc(2rem * -1)'} />
         <Flex direction={'column'} gap={'16px'} justifyContent={'center'} alignItems={'center'}>
-          <Flex direction={'column'} gap={'6px'}>
+          <Flex direction={'column'} gap={'6px'} alignItems={'center'}>
             <Heading color={'black'} fontSize={'lg'}>
-              Sam Smitch
+              {user.session.name}
             </Heading>
-            <Text fontSize='xs'>{user.name}</Text>
+            <Text fontSize='xs'>{user.session.email}</Text>
           </Flex>
           <Button width={'147px'} height={'32px'} fontSize={'xs'} textAlign={'center'}>
             View Profile
