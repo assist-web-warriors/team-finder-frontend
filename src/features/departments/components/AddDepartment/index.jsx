@@ -13,7 +13,7 @@ import Container from './index.styled';
 import { AddIcon } from '@chakra-ui/icons';
 import { Table } from 'src/common';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addDepartmentItem, useAddDepartmentMutation } from 'src/entities/department';
 import { useAddColumns } from '../../hooks';
 import { useCallback, useEffect } from 'react';
@@ -62,7 +62,8 @@ const AddDepartment = () => {
   const toast = useToast();
   const columns = useAddColumns();
   const dispatch = useDispatch();
-  // const managers = useSelector((store) => store.user.managers);
+  const managers = useSelector((store) => store.user.managers);
+
   const {
     register,
     handleSubmit,
@@ -176,7 +177,9 @@ const AddDepartment = () => {
               width={'100%'}
               border={'2px solid #D0D5DD'}>
               <option value=''>Select a manager</option>
-              <option value='13'>Motco Adriana</option>
+              {managers.map((value) => {
+                return <option value={value.id}>{value.name}</option>;
+              })}
             </Select>
             <FormErrorMessage>{errors.manager && 'Please select a option'}</FormErrorMessage>
           </FormControl>
