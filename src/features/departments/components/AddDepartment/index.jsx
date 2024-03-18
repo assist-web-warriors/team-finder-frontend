@@ -13,7 +13,7 @@ import Container from './index.styled';
 import { AddIcon } from '@chakra-ui/icons';
 import { Table } from 'src/common';
 import { useForm } from 'react-hook-form';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addDepartmentItem, useAddDepartmentMutation } from 'src/entities/department';
 import { useAddColumns } from '../../hooks';
 import { useCallback, useEffect } from 'react';
