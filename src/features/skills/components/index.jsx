@@ -1,1 +1,3 @@
-export { default as TemplateComponent } from './Skills';
+import { Tabs as ChakraTabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
+
+export const Tabs = () => {};

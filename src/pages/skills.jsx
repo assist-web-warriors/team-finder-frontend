@@ -1,4 +1,4 @@
-import SkillComponent from 'src/features/skills/components/Skills';
+import { SkillComponent } from 'src/features';
 
 const Skills = () => {
   return <SkillComponent />;
