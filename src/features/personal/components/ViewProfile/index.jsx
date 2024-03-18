@@ -32,7 +32,7 @@ const ViewProfile = () => {
 
   const onSubmit = (data) => {
     // TODO: Update user
-    console.log(data);
+    // console.log(data);
   };
 
   return (
