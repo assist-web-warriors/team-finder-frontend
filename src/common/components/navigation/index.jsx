@@ -1,33 +1,27 @@
-import { Avatar, Flex, Input, InputGroup, InputRightAddon } from '@chakra-ui/react';
+import { Button } from '@chakra-ui/react';
 import Container from './index.styled';
-import { Link } from 'react-router-dom';
-import CONSTANTS from 'src/common/constants';
 import logo from '../../assets/team-finder-logo.svg';
-import { SearchIcon } from '@chakra-ui/icons';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import CONSTANTS from 'src/common/constants';
+import { clearUserData } from 'src/entities/user';
 
 const Navigation = () => {
-  const constants = Object.values(CONSTANTS.NAVIGATION_PAGES);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    dispatch(clearUserData());
+    navigate(CONSTANTS.PAGES.WELCOME);
+  };
 
   return (
     <Container.Default>
       <Container.Wrapper>
         <img src={logo} alt='Logo' />
-        <InputGroup width={'261px'} height={'32px'} color='gray.300'>
-          <Input type='text' placeholder='Search...'></Input>
-          <InputRightAddon pointerEvents='none' bgColor={'#fff'}>
-            <SearchIcon />
-          </InputRightAddon>
-        </InputGroup>
-        <Flex gap={'40px'}>
-          {constants.map((value) => (
-            <Flex>
-              <Link to={value.URL}>{value.NAME}</Link>
-            </Flex>
-          ))}
-          <Flex>
-            <Avatar name='Segun Adebayo' src='https://bit.ly/sage-adebayo' size={'sm'} />
-          </Flex>
-        </Flex>
+        <Button onClick={handleClick} variant={'ghost'} colorScheme={'red'}>
+          Logout
+        </Button>
       </Container.Wrapper>
     </Container.Default>
   );
