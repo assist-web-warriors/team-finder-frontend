@@ -62,7 +62,7 @@ const AddDepartment = () => {
   const toast = useToast();
   const columns = useAddColumns();
   const dispatch = useDispatch();
-  const managers = useSelector((store) => store.user.managers);
+  // const managers = useSelector((store) => store.user.managers);
   const {
     register,
     handleSubmit,
