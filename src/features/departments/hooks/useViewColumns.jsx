@@ -9,7 +9,6 @@ const useViewColumns = () => {
 
   const handleEdit = React.useCallback(
     (data) => {
-      // console.log(data.row.original);
       // TODO: call the fetch function from useEditDepartmentMutation hook
       dispatch(editDepartmentItem(data.row.original));
     },
@@ -17,7 +16,6 @@ const useViewColumns = () => {
   );
   const handleDelete = React.useCallback(
     (data) => {
-      // console.log(data.row.original);
       dispatch(deleteDepartmentItem(data.row.original.id));
     },
     [dispatch],
