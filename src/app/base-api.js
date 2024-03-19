@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { setUserData } from 'src/entities/user';
+import { setUserToken } from 'src/entities/user';
 
 const baseQuery = fetchBaseQuery({
   baseUrl: import.meta.env.VITE_API_ENDPOINT,
@@ -25,9 +25,8 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
     );
 
     if (refreshResult.data) {
-      api.dispatch(setUserData({ token: refreshResult.data.token }));
+      api.dispatch(setUserToken({ token: refreshResult.data.token }));
       result = await baseQuery(args, api, extraOptions);
-    } else {
     }
   }
   return result;

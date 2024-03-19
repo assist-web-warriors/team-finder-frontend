@@ -1,1 +1,7 @@
-export { userSlice, setUserData, clearUserData, selectUserData } from './model/user-slice';
+export {
+  userSlice,
+  setUserData,
+  clearUserData,
+  setUserToken,
+  selectUserData,
+} from './model/user-slice';
