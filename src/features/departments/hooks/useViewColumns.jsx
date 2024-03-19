@@ -1,4 +1,4 @@
-import { Avatar } from '@chakra-ui/react';
+// import { Avatar } from '@chakra-ui/react';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Menu } from 'src/common';
@@ -38,7 +38,8 @@ const useViewColumns = () => {
       {
         accessorKey: 'users',
         header: 'MEMBERS',
-        cell: (data) => data.getValue().map(() => <Avatar size={'sm'} />),
+        cell: (data) => data.getValue(),
+        // .map(() => <Avatar size={'sm'} />),
       },
       {
         id: 'more',

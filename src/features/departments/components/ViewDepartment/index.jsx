@@ -3,26 +3,24 @@ import Container from './index.styled';
 import { AddIcon } from '@chakra-ui/icons';
 import { Table } from 'src/common';
 import { Link } from 'react-router-dom';
-import React, { useCallback, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setDepartmentItems, useGetDepartmentsMutation } from 'src/entities/department';
+import { setDepartmentItems, useGetDepartmentsQuery } from 'src/entities/department';
 import { useViewColumns } from '../../hooks';
 
 const ViewDepartment = () => {
   const dispatch = useDispatch();
-  const department = useSelector((store) => store.department);
+  const department = useSelector((store) => store.department.items);
   const columns = useViewColumns();
 
-  const [getDepartmentsFetch] = useGetDepartmentsMutation();
-
-  const getDepartments = useCallback(async () => {
-    const result = getDepartmentsFetch().unwrap();
-    dispatch(setDepartmentItems(result));
-  }, [dispatch, getDepartmentsFetch]);
+  const { data: fetchedDepartments, refetch } = useGetDepartmentsQuery();
 
   useEffect(() => {
-    getDepartments();
-  }, [getDepartments]);
+    if (fetchedDepartments) {
+      refetch();
+      dispatch(setDepartmentItems(fetchedDepartments));
+    }
+  }, [dispatch, refetch, fetchedDepartments]);
 
   return (
     <Container>
@@ -34,7 +32,7 @@ const ViewDepartment = () => {
             Add New Departments
           </Button>
         </Link>
-        <Table columns={columns} data={department.items} />
+        <Table columns={columns} data={department || []} />
       </Flex>
     </Container>
   );
