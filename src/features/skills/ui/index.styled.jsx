@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 70px;
 
   background-color: #fff;
   border-radius: 16px;
@@ -11,4 +10,8 @@ export const Container = styled.div`
 
   width: 100%;
   height: 100%;
+`;
+
+export const TabContainer = styled.div`
+  margin-bottom: 40px;
 `;

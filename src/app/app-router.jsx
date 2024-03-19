@@ -9,12 +9,12 @@ import {
   ProjectDetails,
   AddDepartments,
   AddTeamRole,
+  Skills,
 } from 'src/pages';
 
 import { Team } from 'src/features';
 import ViewProfile from 'src/features/personal/components/ViewProfile';
 import { selectUserData } from 'src/entities/user';
-import Skills from 'src/pages/skills';
 import Home from 'src/features/home/components/Home';
 
 const AuthGuard = ({ children }) => {
