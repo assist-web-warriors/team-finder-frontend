@@ -16,7 +16,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { addDepartmentItem, useAddDepartmentMutation } from 'src/entities/department';
 import { useAddColumns } from '../../hooks';
-import { useCallback, useEffect } from 'react';
+import { useEffect } from 'react';
 import { setManagersItems } from 'src/entities/user/model/user-slice';
 import { useGetManagersQuery } from 'src/entities/user/api/user-api';
 
@@ -70,7 +70,8 @@ const AddDepartment = () => {
     formState: { errors },
   } = useForm();
 
-  const { data: fetchedManagers } = useGetManagersQuery();
+  const { data: fetchedManagers, refetch } = useGetManagersQuery();
+
   const [addDepartmentFetch, { isLoading, isSuccess, isError }] = useAddDepartmentMutation();
 
   const onSubmit = async (data) => {
@@ -86,10 +87,11 @@ const AddDepartment = () => {
   };
 
   useEffect(() => {
-    if (managers !== fetchedManagers) {
+    refetch();
+    if (fetchedManagers) {
       dispatch(setManagersItems(fetchedManagers));
     }
-  }, [dispatch, fetchedManagers]);
+  }, [dispatch, refetch, fetchedManagers]);
 
   useEffect(() => {
     if (isError) {
