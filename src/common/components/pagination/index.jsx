@@ -42,7 +42,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         <Button
           _hover={{ borderColor: 'var(--blue-color)', '& svg': { color: 'var(--blue-color)' } }}
           onClick={() => onPageChange(currentPage + 1)}
-          isDisabled={currentPage === totalPages}
+          isDisabled={currentPage === totalPages - 1}
           transition={'0.1s all ease-in-out'}
           variant={'outline'}>
           <ChevronRightIcon transition={'0.1s all ease-in-out'} color={'gray'} />

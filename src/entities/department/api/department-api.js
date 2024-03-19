@@ -4,13 +4,13 @@ const departmentApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     getDepartments: build.mutation({
       query: () => ({
-        url: 'department', // to be updated
+        url: 'department',
         method: 'GET',
       }),
     }),
     addDepartment: build.mutation({
       query: (body) => ({
-        url: 'department', // to be updated
+        url: 'department/create',
         method: 'POST',
         body,
       }),
@@ -23,7 +23,7 @@ const departmentApi = baseApi.injectEndpoints({
     }),
     editDepartment: build.mutation({
       query: (body) => ({
-        url: 'department', // to be updated
+        url: 'department/update',
         method: 'PUT',
         body,
       }),
