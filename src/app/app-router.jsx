@@ -21,7 +21,7 @@ const AuthGuard = ({ children }) => {
   const { isAuthorized } = useSelector(selectUserData);
   const location = useLocation();
 
-  if (!isAuthorized) return <Navigate to='auth/signup' state={{ from: location }} />;
+  if (!isAuthorized) return <Navigate to='/auth/signup' state={{ from: location }} />;
   return children;
 };
 

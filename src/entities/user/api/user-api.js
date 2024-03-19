@@ -16,13 +16,12 @@ const userApi = baseApi.injectEndpoints({
         body: credentials,
       }),
     }),
-    getManagers: build.mutation({
+    getManagers: build.query({
       query: () => ({
         url: 'user/department-managers',
-        method: 'GET',
       }),
     }),
   }),
 });
 
-export const { useLoginMutation, useSignupMutation, useGetManagersMutation } = userApi;
+export const { useLoginMutation, useSignupMutation, useGetManagersQuery } = userApi;

@@ -18,7 +18,7 @@ import { addDepartmentItem, useAddDepartmentMutation } from 'src/entities/depart
 import { useAddColumns } from '../../hooks';
 import { useCallback, useEffect } from 'react';
 import { setManagersItems } from 'src/entities/user/model/user-slice';
-import { useGetManagersMutation } from 'src/entities/user/api/user-api';
+import { useGetManagersQuery } from 'src/entities/user/api/user-api';
 
 const data = [
   {
@@ -70,7 +70,7 @@ const AddDepartment = () => {
     formState: { errors },
   } = useForm();
 
-  const [getManagersFetch] = useGetManagersMutation();
+  const { data: fetchedManagers } = useGetManagersQuery();
   const [addDepartmentFetch, { isLoading, isSuccess, isError }] = useAddDepartmentMutation();
 
   const onSubmit = async (data) => {
@@ -85,14 +85,11 @@ const AddDepartment = () => {
     );
   };
 
-  const getManagers = useCallback(async () => {
-    const result = await getManagersFetch().unwrap();
-    dispatch(setManagersItems(result));
-  }, [dispatch, getManagersFetch]);
-
   useEffect(() => {
-    getManagers();
-  }, [getManagers]);
+    if (managers !== fetchedManagers) {
+      dispatch(setManagersItems(fetchedManagers));
+    }
+  }, [dispatch, fetchedManagers]);
 
   useEffect(() => {
     if (isError) {
@@ -177,9 +174,10 @@ const AddDepartment = () => {
               width={'100%'}
               border={'2px solid #D0D5DD'}>
               <option value=''>Select a manager</option>
-              {managers.map((value) => {
-                return <option value={value.id}>{value.name}</option>;
-              })}
+              {managers &&
+                managers.map((value) => {
+                  return <option value={value.id}>{value.name}</option>;
+                })}
             </Select>
             <FormErrorMessage>{errors.manager && 'Please select a option'}</FormErrorMessage>
           </FormControl>
