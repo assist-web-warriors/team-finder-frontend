@@ -6,7 +6,7 @@ import { CustomSelectOption } from 'src/shared/ui';
 import { columns } from './lib/constants';
 import { Options, SelectWrapper } from '../index.styled';
 
-export const AddNewSkill = ({ data, categories }) => {
+export const AddNewSkill = ({ data }) => {
   const [sortBy, setSortBy] = useState('department');
 
   const handleSelectChange = (e) => {
