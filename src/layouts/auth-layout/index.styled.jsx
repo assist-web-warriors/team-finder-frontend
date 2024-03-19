@@ -6,3 +6,7 @@ export const ImageContainer = styled.img`
   height: 520px;
   width: 694px;
 `;
+
+export const Box = styled.div`
+  background-color: #fff;
+`;

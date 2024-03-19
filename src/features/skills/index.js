@@ -1,0 +1,1 @@
+export { SkillComponent } from './ui';
