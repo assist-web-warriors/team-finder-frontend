@@ -28,10 +28,17 @@ const Sidebar = () => {
             </Heading>
             <Text fontSize='xs'>{user.session.email}</Text>
           </Flex>
-          <Button width={'147px'} height={'32px'} fontSize={'xs'} textAlign={'center'}>
-            View Profile
-            <ExternalLinkIcon />
-          </Button>
+          <Link to={'/personal'}>
+            <Button
+              width={'147px'}
+              height={'32px'}
+              fontSize={'xs'}
+              textAlign={'center'}
+              gap={'8px'}>
+              View Profile
+              <ExternalLinkIcon />
+            </Button>
+          </Link>
         </Flex>
       </Flex>
       <Flex

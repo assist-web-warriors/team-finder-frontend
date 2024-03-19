@@ -16,19 +16,36 @@ import { Team } from 'src/features';
 import ViewProfile from 'src/features/personal/components/ViewProfile';
 import { selectUserData } from 'src/entities/user';
 import Home from 'src/features/home/components/Home';
+import CONSTANTS from 'src/common/constants';
+import { useMemo } from 'react';
 
 const AuthGuard = ({ children }) => {
   const { isAuthorized } = useSelector(selectUserData);
   const location = useLocation();
 
-  if (!isAuthorized) return <Navigate to='/auth/signup' state={{ from: location }} />;
+  const isAuthPage = useMemo(
+    () =>
+      CONSTANTS.PAGES.SIGN_UP === location.pathname ||
+      CONSTANTS.PAGES.SIGN_IN === location.pathname ||
+      CONSTANTS.PAGES.WELCOME === location.pathname,
+    [location],
+  );
+
+  if (isAuthorized && isAuthPage)
+    return <Navigate to={CONSTANTS.PAGES.PERSONAL} state={{ from: location }} />;
+  if (!isAuthorized && !isAuthPage)
+    return <Navigate to={CONSTANTS.PAGES.SIGN_IN} state={{ from: location }} />;
   return children;
 };
 
 export const router = createBrowserRouter([
   {
     path: 'auth',
-    element: <AuthLayout />,
+    element: (
+      <AuthGuard>
+        <AuthLayout />
+      </AuthGuard>
+    ),
     errorElement: <>404</>, // to do <AuthNotFound />
     children: [
       { path: '', element: <Navigate to='signup' /> },
@@ -37,6 +54,11 @@ export const router = createBrowserRouter([
   },
   {
     path: '/',
+    element: (
+      <AuthGuard>
+        <Outlet />
+      </AuthGuard>
+    ),
     errorElement: <>404</>,
     children: [{ path: '', element: <Home /> }],
   },

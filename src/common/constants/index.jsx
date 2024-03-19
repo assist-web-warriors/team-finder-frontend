@@ -24,6 +24,8 @@ const CONSTANTS = {
     PROJECTS: '/projects',
     SKILS: '/skills',
     PERSONAL: '/personal',
+    SIGN_IN: '/auth/login',
+    SIGN_UP: '/auth/signup',
     WELCOME: '/',
   },
   SIDEBAR_PAGES: {
