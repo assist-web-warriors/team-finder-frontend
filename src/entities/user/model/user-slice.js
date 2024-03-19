@@ -13,6 +13,9 @@ export const userSlice = createSlice({
     managers: [],
   },
   reducers: {
+    setUserToken: (state, { payload: { token } }) => {
+      state.session.token = token;
+    },
     setUserData: (state, { payload: { token, roles, name, email } }) => {
       state.session = {};
       state.session.token = token;
@@ -34,5 +37,5 @@ export const userSlice = createSlice({
   },
 });
 
-export const { setUserData, clearUserData, setManagersItems } = userSlice.actions;
+export const { setUserData, clearUserData, setManagersItems, setUserToken } = userSlice.actions;
 export const selectUserData = (state) => state.user.session;
