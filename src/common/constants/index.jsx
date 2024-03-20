@@ -33,7 +33,8 @@ const CONSTANTS = {
     SKILS: '/skills',
     PERSONAL: '/personal',
     SIGN_IN: '/auth/login',
-    SIGN_UP: '/auth/signup',
+    SIGN_UP: '/auth/signup/organization',
+    SIGN_UP_AS_EMPLOYEE: '/auth/signup/employee',
     WELCOME: '/',
   },
   SIDEBAR_PAGES: {
@@ -41,6 +42,11 @@ const CONSTANTS = {
       NAME: 'Organization',
       URL: '/organization',
       ICON: <DepartmentIcon />,
+    },
+    PERSONAL: {
+      NAME: 'Personal',
+      URL: '/personal',
+      ICON: <UserIcon />,
     },
     DEPARTMENTS: {
       NAME: 'Departments',
@@ -51,11 +57,6 @@ const CONSTANTS = {
       NAME: 'Skills',
       URL: '/skills',
       ICON: <SunIcon />,
-    },
-    PERSONAL: {
-      NAME: 'Personal',
-      URL: '/personal',
-      ICON: <UserIcon />,
     },
     TEAM: {
       NAME: 'Team',

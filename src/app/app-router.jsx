@@ -15,26 +15,39 @@ import {
 import { Team } from 'src/features';
 import ViewProfile from 'src/features/personal/components/ViewProfile';
 import { selectUserData } from 'src/entities/user';
-import Home from 'src/features/home/components/Home';
 import CONSTANTS from 'src/common/constants';
 import { useMemo } from 'react';
+import WelcomePage from 'src/pages/welcome.page';
 
-const AuthGuard = ({ children }) => {
-  const { isAuthorized } = useSelector(selectUserData);
+const AuthGuard = ({ children, forRoles }) => {
+  const { isAuthorized, roles } = useSelector(selectUserData);
   const location = useLocation();
 
   const isAuthPage = useMemo(
     () =>
       CONSTANTS.PAGES.SIGN_UP === location.pathname ||
       CONSTANTS.PAGES.SIGN_IN === location.pathname ||
+      location.pathname.includes(CONSTANTS.PAGES.SIGN_UP_AS_EMPLOYEE) ||
       CONSTANTS.PAGES.WELCOME === location.pathname,
     [location],
   );
 
-  if (isAuthorized && isAuthPage)
+  const isAccessGranted = useMemo(() => {
+    const forRolesSet = new Set(forRoles);
+    const sessionRoles = new Set(roles);
+    return [...forRolesSet].some((role) => sessionRoles.has(role));
+  }, [roles, forRoles]);
+
+  if (!isAuthorized && !isAccessGranted) {
+    return <Navigate to={CONSTANTS.PAGES.PERSONAL} state={{ from: location }} />;
+  }
+  if (isAuthorized && isAuthPage) {
     return <Navigate to={CONSTANTS.PAGES.ORGANIZATION} state={{ from: location }} />;
-  if (!isAuthorized && !isAuthPage)
+  }
+  if (!isAuthorized && !isAuthPage) {
     return <Navigate to={CONSTANTS.PAGES.SIGN_IN} state={{ from: location }} />;
+  }
+
   return children;
 };
 
@@ -60,12 +73,12 @@ export const router = createBrowserRouter([
       </AuthGuard>
     ),
     errorElement: <>404</>,
-    children: [{ path: '', element: <Home /> }],
+    children: [{ path: '', element: <WelcomePage /> }],
   },
   {
     path: '/organization',
     element: (
-      <AuthGuard>
+      <AuthGuard forRoles={[CONSTANTS.ROLES.ADMIN]}>
         <AppLayout>
           <Outlet />
         </AppLayout>
@@ -77,7 +90,13 @@ export const router = createBrowserRouter([
   {
     path: CONSTANTS.PAGES.DEPARTMENTS,
     element: (
-      <AuthGuard>
+      <AuthGuard
+        forRoles={[
+          CONSTANTS.ROLES.ADMIN,
+          CONSTANTS.ROLES.DEPARTMENT_MANAGER,
+          CONSTANTS.ROLES.EMPLOYEE,
+          CONSTANTS.ROLES.PROJECT_MANAGER,
+        ]}>
         <AppLayout>
           <Outlet />
         </AppLayout>
@@ -89,7 +108,7 @@ export const router = createBrowserRouter([
   {
     path: CONSTANTS.PAGES.ADD_DEPARTMENT,
     element: (
-      <AuthGuard>
+      <AuthGuard forRoles={[CONSTANTS.ROLES.ADMIN, CONSTANTS.ROLES.DEPARTMENT_MANAGER]}>
         <AppLayout>
           <Outlet />
         </AppLayout>
@@ -101,7 +120,13 @@ export const router = createBrowserRouter([
   {
     path: '/projects',
     element: (
-      <AuthGuard>
+      <AuthGuard
+        forRoles={[
+          CONSTANTS.ROLES.ADMIN,
+          CONSTANTS.ROLES.DEPARTMENT_MANAGER,
+          CONSTANTS.ROLES.EMPLOYEE,
+          CONSTANTS.ROLES.PROJECT_MANAGER,
+        ]}>
         <AppLayout>
           <Outlet />
         </AppLayout>
@@ -113,7 +138,13 @@ export const router = createBrowserRouter([
   {
     path: '/project-details/:id',
     element: (
-      <AuthGuard>
+      <AuthGuard
+        forRoles={[
+          CONSTANTS.ROLES.ADMIN,
+          CONSTANTS.ROLES.DEPARTMENT_MANAGER,
+          CONSTANTS.ROLES.EMPLOYEE,
+          CONSTANTS.ROLES.PROJECT_MANAGER,
+        ]}>
         <AppLayout>
           <Outlet />
         </AppLayout>
@@ -125,7 +156,13 @@ export const router = createBrowserRouter([
   {
     path: '/teams',
     element: (
-      <AuthGuard>
+      <AuthGuard
+        forRoles={[
+          CONSTANTS.ROLES.ADMIN,
+          CONSTANTS.ROLES.DEPARTMENT_MANAGER,
+          CONSTANTS.ROLES.EMPLOYEE,
+          CONSTANTS.ROLES.PROJECT_MANAGER,
+        ]}>
         <AppLayout>
           <Outlet />
         </AppLayout>
@@ -137,7 +174,13 @@ export const router = createBrowserRouter([
   {
     path: '/add-team-role',
     element: (
-      <AuthGuard>
+      <AuthGuard
+        forRoles={[
+          CONSTANTS.ROLES.ADMIN,
+          CONSTANTS.ROLES.DEPARTMENT_MANAGER,
+          CONSTANTS.ROLES.EMPLOYEE,
+          CONSTANTS.ROLES.PROJECT_MANAGER,
+        ]}>
         <AppLayout>
           <Outlet />
         </AppLayout>
@@ -149,7 +192,13 @@ export const router = createBrowserRouter([
   {
     path: '/personal',
     element: (
-      <AuthGuard>
+      <AuthGuard
+        forRoles={[
+          CONSTANTS.ROLES.ADMIN,
+          CONSTANTS.ROLES.DEPARTMENT_MANAGER,
+          CONSTANTS.ROLES.EMPLOYEE,
+          CONSTANTS.ROLES.PROJECT_MANAGER,
+        ]}>
         <AppLayout>
           <Outlet />
         </AppLayout>
@@ -161,7 +210,13 @@ export const router = createBrowserRouter([
   {
     path: '/skills',
     element: (
-      <AuthGuard>
+      <AuthGuard
+        forRoles={[
+          CONSTANTS.ROLES.ADMIN,
+          CONSTANTS.ROLES.DEPARTMENT_MANAGER,
+          CONSTANTS.ROLES.EMPLOYEE,
+          CONSTANTS.ROLES.PROJECT_MANAGER,
+        ]}>
         <AppLayout>
           <Outlet />
         </AppLayout>

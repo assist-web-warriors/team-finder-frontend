@@ -12,6 +12,7 @@ export const userSlice = createSlice({
       organization: 0,
     },
     managers: [],
+    members: [],
   },
   reducers: {
     setUserToken: (state, { payload: { token } }) => {
@@ -37,8 +38,12 @@ export const userSlice = createSlice({
     setManagersItems: (state, { payload }) => {
       state.managers = payload;
     },
+    setMembersItems: (state, { payload }) => {
+      state.members = payload;
+    },
   },
 });
 
-export const { setUserData, clearUserData, setManagersItems, setUserToken } = userSlice.actions;
+export const { setUserData, clearUserData, setManagersItems, setUserToken, setMembersItems } =
+  userSlice.actions;
 export const selectUserData = (state) => state.user.session;

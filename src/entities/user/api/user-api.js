@@ -21,6 +21,11 @@ const userApi = baseApi.injectEndpoints({
         url: 'user/department-managers',
       }),
     }),
+    getMembers: build.query({
+      query: () => ({
+        url: 'user/organization-members',
+      }),
+    }),
     getEmp: build.query({
       query: () => ({
         url: 'user/department-managers',
@@ -29,4 +34,5 @@ const userApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useLoginMutation, useSignupMutation, useGetManagersQuery } = userApi;
+export const { useLoginMutation, useSignupMutation, useGetManagersQuery, useGetMembersQuery } =
+  userApi;
