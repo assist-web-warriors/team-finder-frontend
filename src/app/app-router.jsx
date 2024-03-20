@@ -38,7 +38,7 @@ const AuthGuard = ({ children, forRoles }) => {
     return [...forRolesSet].some((role) => sessionRoles.has(role));
   }, [roles, forRoles]);
 
-  if (!isAuthorized && !isAccessGranted) {
+  if (isAuthorized && !isAccessGranted) {
     return <Navigate to={CONSTANTS.PAGES.PERSONAL} state={{ from: location }} />;
   }
   if (isAuthorized && isAuthPage) {
