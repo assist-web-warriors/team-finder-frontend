@@ -13,7 +13,7 @@ const Sidebar = () => {
   return (
     <Container>
       <Flex
-        bgColor={'#fff'}
+        bgColor={'white'}
         gap={'28px'}
         justifyContent={'center'}
         alignItems={'center'}
@@ -28,7 +28,7 @@ const Sidebar = () => {
             </Heading>
             <Text fontSize='xs'>{user.session.email}</Text>
           </Flex>
-          <Link to={'/personal'}>
+          <Link to={CONSTANTS.PAGES.PERSONAL}>
             <Button
               width={'147px'}
               height={'32px'}
@@ -54,8 +54,12 @@ const Sidebar = () => {
         padding={'24px'}>
         {constants.map((value, index) => (
           <Flex
+            key={index}
             alignItems={'center'}
-            borderLeft={location.pathname === value.URL ? '3px #0356E8 solid' : ''}
+            borderLeft={
+              location.pathname.includes(value.URL) ? '3px #0356E8 solid' : '3px transparent solid'
+            }
+            borderRadius={'3px'}
             padding={'3px'}
             gap={'8px'}>
             {value.ICON}

@@ -7,7 +7,7 @@ const Container = styled.div`
   width: var(--sidebar-size);
   position: sticky;
   top: var(--layout-gap);
-  height: calc(100vh - var(--layout-gap));
+  height: calc(100vh - var(--layout-gap) - var(--nav-size));
   padding-bottom: var(--layout-gap);
   a {
     font-size: var(--large-text);

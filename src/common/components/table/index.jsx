@@ -12,7 +12,7 @@ import {
 
 import Pagination from '../pagination';
 
-const TableComponent = ({ data, columns }) => {
+const TableComponent = ({ data = [], columns }) => {
   const [pagination, setPagination] = React.useState({
     pageIndex: 0,
     pageSize: 7,
@@ -32,7 +32,7 @@ const TableComponent = ({ data, columns }) => {
     },
   });
 
-  return (
+  return data.length ? (
     <Container>
       <TableContainer border={'1px solid #E2E8F0'} borderRadius={'12px'} width={'100%'}>
         <ChakraTable width={'100%'}>
@@ -72,6 +72,6 @@ const TableComponent = ({ data, columns }) => {
         onPageChange={(page) => table.setPageIndex(page)}
       />
     </Container>
-  );
+  ) : null;
 };
 export default TableComponent;

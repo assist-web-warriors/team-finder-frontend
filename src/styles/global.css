@@ -22,6 +22,9 @@
   --gray-light: #d0d5dd;
   --blue-color: #0356e8;
   --black-color: #1c1c1e;
+  --btn-text-color: #fff;
+  --btn-bg-color: #0356e8;
+  --btn-bg-hover-color: #0048c5;
   --bg-color: #f4f7fc;
 }
 

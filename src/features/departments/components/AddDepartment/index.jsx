@@ -6,11 +6,12 @@ import {
   FormErrorMessage,
   FormLabel,
   Heading,
+  Input,
   Select,
   useToast,
 } from '@chakra-ui/react';
 import Container from './index.styled';
-import { AddIcon } from '@chakra-ui/icons';
+import { AddIcon, ArrowBackIcon } from '@chakra-ui/icons';
 import { Table } from 'src/common';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
@@ -19,6 +20,8 @@ import { useAddColumns } from '../../hooks';
 import { useEffect } from 'react';
 import { setManagersItems } from 'src/entities/user/model/user-slice';
 import { useGetManagersQuery } from 'src/entities/user/api/user-api';
+import { Link, useNavigate } from 'react-router-dom';
+import CONSTANTS from 'src/common/constants';
 
 const data = [
   {
@@ -63,27 +66,35 @@ const AddDepartment = () => {
   const columns = useAddColumns();
   const dispatch = useDispatch();
   const managers = useSelector((store) => store.user.managers);
+  const navigate = useNavigate();
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    reset,
+    formState: { errors, touchedFields },
   } = useForm();
 
   const { data: fetchedManagers, refetch } = useGetManagersQuery();
 
-  const [addDepartmentFetch, { isLoading, isSuccess, isError }] = useAddDepartmentMutation();
+  const [addDepartmentFetch, { isLoading, isSuccess, isError, error }] = useAddDepartmentMutation();
 
   const onSubmit = async (data) => {
-    const result = await addDepartmentFetch({ name: data.name, manager: data.manager }).unwrap();
+    const result = await addDepartmentFetch({
+      department: data.name,
+      manager: data.manager,
+    }).unwrap();
     dispatch(
       addDepartmentItem({
         id: result.id,
         name: result.name,
         manager: result.manager,
-        users: [{ name: 'Jhon Doe', url: '' }],
+        members: null,
+        projects: null,
+        skills: null,
       }),
     );
+    navigate(CONSTANTS.PAGES.DEPARTMENTS);
   };
 
   useEffect(() => {
@@ -95,13 +106,21 @@ const AddDepartment = () => {
 
   useEffect(() => {
     if (isError) {
-      toast({
-        title: 'Something went wrong.',
-        status: 'error',
-        isClosable: true,
-      });
+      if (error.status === 400) {
+        toast({
+          title: 'The manager is already assigned to one department.',
+          status: 'error',
+          isClosable: true,
+        });
+      } else {
+        toast({
+          title: "The department can't be added. Try again later.",
+          status: 'error',
+          isClosable: true,
+        });
+      }
     }
-  }, [isError, toast]);
+  }, [isError, error, toast]);
 
   useEffect(() => {
     if (isSuccess) {
@@ -112,37 +131,36 @@ const AddDepartment = () => {
       });
     }
   }, [isSuccess, toast]);
+
   return (
     <Container>
       <Flex gap={'20px'} direction={'column'} justifyContent={'center'} alignItems={'flex-start'}>
         <Flex gap={'20px'} width={'100%'} justifyContent={'space-between'}>
-          <Heading fontSize={'2xl'}>Add Departments</Heading>
+          <Flex alignItems={'center'} gap={'10px'}>
+            <Link to={CONSTANTS.PAGES.DEPARTMENTS}>
+              <Button
+                leftIcon={<ArrowBackIcon />}
+                size={'xs'}
+                variant={'ghost'}
+                css={{ '& > span': { margin: 0 }, svg: { width: '24px', height: '24px' } }}
+              />
+            </Link>
+            <Heading fontSize={'2xl'} lineHeight={0}>
+              Add new department
+            </Heading>
+          </Flex>
           <Flex gap={'20px'}>
             <Button
-              _hover={{
-                bgColor: '#fff',
-                borderRadius: '8px',
-                border: '1px solid var(--blue-color)',
-                color: '#0356E8',
-              }}
-              bgColor={'#fff'}
-              color={'#D0D5DD'}
-              border={'1px solid #D0D5DD'}>
+              variant={'outline'}
+              isDisabled={Object.values(touchedFields).length === 0 || isLoading}
+              onClick={() => reset()}>
               Cancel
             </Button>
             <Button
               isLoading={isLoading}
-              bgColor={true ? '#0356E8' : '#fff'}
+              isDisabled={Object.values(touchedFields).length === 0}
               form='department_form'
-              _hover={{
-                bgColor: '#fff',
-                borderRadius: '8px',
-                border: '1px solid var(--blue-color)',
-                color: '#0356E8',
-              }}
-              type={'submit'}
-              color={'#D0D5DD'}
-              border={'1px solid #D0D5DD'}>
+              type={'submit'}>
               Save
             </Button>
           </Flex>
@@ -150,19 +168,16 @@ const AddDepartment = () => {
         <form onSubmit={handleSubmit(onSubmit)} id='department_form'>
           <FormControl isInvalid={errors.name}>
             <FormLabel>Department Name</FormLabel>
-            <Select
+            <Input
               id='name'
               {...register('name', { required: true })}
               name='name'
+              placeholder='Please enter a name'
               cursor={'pointer'}
               bgColor={'white'}
               width={'100%'}
-              border={'2px solid #D0D5DD'}>
-              <option value=''>Select a department</option>
-              <option value='FrontEnd'>FrontEnd</option>
-              <option value='BackEnd'>BackEnd</option>
-              <option value='UI/UX'>UI/UX</option>
-            </Select>
+              border={'2px solid #D0D5DD'}
+            />
             <FormErrorMessage>{errors.name && 'Please select a option'}</FormErrorMessage>
           </FormControl>
           <FormControl isInvalid={errors.manager}>
@@ -176,10 +191,13 @@ const AddDepartment = () => {
               width={'100%'}
               border={'2px solid #D0D5DD'}>
               <option value=''>Select a manager</option>
-              {managers &&
-                managers.map((value) => {
-                  return <option value={value.id}>{value.name}</option>;
-                })}
+              {managers.length
+                ? managers.map((value) => (
+                    <option key={value.id} value={value.id}>
+                      {value.name}
+                    </option>
+                  ))
+                : null}
             </Select>
             <FormErrorMessage>{errors.manager && 'Please select a option'}</FormErrorMessage>
           </FormControl>

@@ -26,7 +26,9 @@ const CONSTANTS = {
     DEPARTMENT_MANAGER: 'Department Manager',
   },
   PAGES: {
+    ORGANIZATION: '/organization',
     DEPARTMENTS: '/departments',
+    ADD_DEPARTMENT: '/departments/add',
     PROJECTS: '/projects',
     SKILS: '/skills',
     PERSONAL: '/personal',

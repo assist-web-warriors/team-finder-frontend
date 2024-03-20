@@ -32,7 +32,7 @@ const AuthGuard = ({ children }) => {
   );
 
   if (isAuthorized && isAuthPage)
-    return <Navigate to={CONSTANTS.PAGES.PERSONAL} state={{ from: location }} />;
+    return <Navigate to={CONSTANTS.PAGES.ORGANIZATION} state={{ from: location }} />;
   if (!isAuthorized && !isAuthPage)
     return <Navigate to={CONSTANTS.PAGES.SIGN_IN} state={{ from: location }} />;
   return children;
@@ -75,7 +75,7 @@ export const router = createBrowserRouter([
     children: [{ path: '', element: <OrganizationPage /> }],
   },
   {
-    path: '/departments',
+    path: CONSTANTS.PAGES.DEPARTMENTS,
     element: (
       <AuthGuard>
         <AppLayout>
@@ -85,6 +85,18 @@ export const router = createBrowserRouter([
     ),
     errorElement: <>404</>,
     children: [{ path: '', element: <DepartmentPage /> }],
+  },
+  {
+    path: CONSTANTS.PAGES.ADD_DEPARTMENT,
+    element: (
+      <AuthGuard>
+        <AppLayout>
+          <Outlet />
+        </AppLayout>
+      </AuthGuard>
+    ),
+    errorElement: <>404</>,
+    children: [{ path: '', element: <AddDepartments /> }],
   },
   {
     path: '/projects',
@@ -109,18 +121,6 @@ export const router = createBrowserRouter([
     ),
     errorElement: <>404</>,
     children: [{ path: '', element: <ProjectDetails /> }],
-  },
-  {
-    path: '/add-departments',
-    element: (
-      <AuthGuard>
-        <AppLayout>
-          <Outlet />
-        </AppLayout>
-      </AuthGuard>
-    ),
-    errorElement: <>404</>,
-    children: [{ path: '', element: <AddDepartments /> }],
   },
   {
     path: '/teams',

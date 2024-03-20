@@ -9,16 +9,8 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     for (let i = startPage; i <= currentPage + 1 && i < totalPages; i++) {
       buttons.push(
         <Button
-          _hover={{
-            bgColor: '#fff',
-            borderRadius: '8px',
-            border: '1px solid var(--blue-color)',
-            color: '#0356E8',
-          }}
-          color={currentPage === i ? '#fff' : '#0356E8'}
-          bgColor={currentPage === i ? '#0356E8' : ''}
           key={i}
-          variant={currentPage === i ? 'solid' : ''}
+          variant={currentPage === i ? 'solid' : 'outline'}
           onClick={() => onPageChange(i)}>
           {i + 1}
         </Button>,
@@ -31,7 +23,6 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     <Container>
       <Flex gap={'10px'}>
         <Button
-          _hover={{ borderColor: 'var(--blue-color)', '& svg': { color: 'var(--blue-color)' } }}
           onClick={() => onPageChange(currentPage - 1)}
           isDisabled={currentPage === 0}
           transition={'0.1s all ease-in-out'}
@@ -40,7 +31,6 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         </Button>
         {renderPageButtons()}
         <Button
-          _hover={{ borderColor: 'var(--blue-color)', '& svg': { color: 'var(--blue-color)' } }}
           onClick={() => onPageChange(currentPage + 1)}
           isDisabled={currentPage === totalPages - 1}
           transition={'0.1s all ease-in-out'}

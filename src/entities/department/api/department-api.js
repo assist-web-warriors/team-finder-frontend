@@ -2,9 +2,10 @@ import { baseApi } from 'src/app/base-api';
 
 const departmentApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
-    getDepartments: build.query({
+    getDepartments: build.mutation({
       query: () => ({
         url: 'department/all',
+        method: 'GET',
       }),
     }),
     addDepartment: build.mutation({
@@ -15,9 +16,10 @@ const departmentApi = baseApi.injectEndpoints({
       }),
     }),
     deleteDepartment: build.mutation({
-      query: () => ({
-        url: 'department', // to be updated
+      query: (body) => ({
+        url: 'department/delete',
         method: 'DELETE',
+        body,
       }),
     }),
     editDepartment: build.mutation({
@@ -31,7 +33,7 @@ const departmentApi = baseApi.injectEndpoints({
 });
 
 export const {
-  useGetDepartmentsQuery,
+  useGetDepartmentsMutation,
   useAddDepartmentMutation,
   useDeleteDepartmentMutation,
   useEditDepartmentMutation,

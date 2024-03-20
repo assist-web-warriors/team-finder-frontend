@@ -1,19 +1,30 @@
 import { MenuButton, Menu as ChakraMenu, MenuItem, MenuList } from '@chakra-ui/menu';
 import Container from './index.styled';
 import MoreIcon from '../../assets/more-icon.svg?react';
+import { Spinner, Text } from '@chakra-ui/react';
+import { DeleteIcon, EditIcon } from '@chakra-ui/icons';
 
-const Menu = ({ deleteProps, editProps }) => {
+const Menu = ({ deleteProps, editProps, isLoading }) => {
   return (
     <Container>
-      <ChakraMenu>
-        <MenuButton>
-          <MoreIcon />
-        </MenuButton>
-        <MenuList>
-          <MenuItem {...deleteProps}>Delete</MenuItem>
-          <MenuItem {...editProps}>Edit</MenuItem>
-        </MenuList>
-      </ChakraMenu>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <ChakraMenu>
+          <MenuButton>
+            <MoreIcon />
+          </MenuButton>
+          <MenuList>
+            <MenuItem gap={'10px'} {...editProps}>
+              <EditIcon />
+              Edit
+            </MenuItem>
+            <MenuItem gap={'10px'} {...deleteProps}>
+              <DeleteIcon color={'red.500'} /> <Text color={'red.500'}> Delete</Text>
+            </MenuItem>
+          </MenuList>
+        </ChakraMenu>
+      )}
     </Container>
   );
 };
