@@ -1,7 +1,7 @@
 import AddDepartment from '../features/departments/components/AddDepartment';
 
-const AddDepartments = () => {
+const AddDepartmenPage = () => {
   return <AddDepartment />;
 };
 
-export default AddDepartments;
+export default AddDepartmenPage;

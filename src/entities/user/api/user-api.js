@@ -21,6 +21,11 @@ const userApi = baseApi.injectEndpoints({
         url: 'user/department-managers',
       }),
     }),
+    getEmp: build.query({
+      query: () => ({
+        url: 'user/department-managers',
+      }),
+    }),
   }),
 });
 

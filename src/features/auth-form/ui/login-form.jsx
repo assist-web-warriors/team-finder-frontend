@@ -22,8 +22,16 @@ const LoginForm = () => {
     const { token, user } = await loginUser(request).unwrap();
 
     if (token) {
-      dispatch(setUserData({ token, roles: user.roles, name: user.name, email: user.email }));
-      navigate(CONSTANTS.PAGES.PERSONAL);
+      dispatch(
+        setUserData({
+          token,
+          roles: user.roles,
+          name: user.name,
+          email: user.email,
+          organization: user.organization,
+        }),
+      );
+      navigate(CONSTANTS.PAGES.ORGANIZATION);
     }
   };
 

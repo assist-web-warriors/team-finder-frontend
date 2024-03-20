@@ -19,8 +19,16 @@ import {
 } from '@chakra-ui/react';
 
 const CONSTANTS = {
+  ROLES: {
+    EMPLOYEE: 'Employee',
+    ADMIN: 'Organization Administrator',
+    PROJECT_MANAGER: 'Project Manager',
+    DEPARTMENT_MANAGER: 'Department Manager',
+  },
   PAGES: {
+    ORGANIZATION: '/organization',
     DEPARTMENTS: '/departments',
+    ADD_DEPARTMENT: '/departments/add',
     PROJECTS: '/projects',
     SKILS: '/skills',
     PERSONAL: '/personal',
@@ -58,12 +66,6 @@ const CONSTANTS = {
       NAME: 'Projects',
       URL: '/projects',
       ICON: <ProjectIcon />,
-    },
-  },
-  NAVIGATION_PAGES: {
-    NOTIFICATION: {
-      NAME: 'Notification',
-      URL: '/notification',
     },
   },
   PROJECTS_DETAILS: {

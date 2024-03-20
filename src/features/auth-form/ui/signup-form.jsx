@@ -29,7 +29,7 @@ const SignupForm = () => {
 
     if (token) {
       dispatch(setUserData({ token, roles: user.roles, name: user.name, email: user.email }));
-      navigate(CONSTANTS.PAGES.PERSONAL);
+      navigate(CONSTANTS.PAGES.ORGANIZATION);
     }
   };
 
