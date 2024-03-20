@@ -28,7 +28,7 @@ const Sidebar = () => {
             </Heading>
             <Text fontSize='xs'>{user.session.email}</Text>
           </Flex>
-          <Link to={CONSTANTS.PAGES.PERSONAL}>
+          <Link to={CONSTANTS.PAGES.PERSONAL} target='_blank' rel='noopener noreferrer'>
             <Button
               width={'147px'}
               height={'32px'}

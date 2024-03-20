@@ -2,8 +2,9 @@ import { Button, Flex, Heading, Text } from '@chakra-ui/react';
 import Container from './index.styled';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/team-finder-logo.svg';
+import CONSTANTS from 'src/common/constants';
 
-const Home = () => {
+const CallToAction = () => {
   return (
     <Container>
       <Flex justifyContent={'center'} alignItems={'center'} direction={'column'} gap={'35px'}>
@@ -15,12 +16,12 @@ const Home = () => {
           <Text fontSize={'18px'}>Manage your team with super features now!</Text>
         </Flex>
         <Flex gap={'25px'}>
-          <Link to='/auth/signup'>
+          <Link to={CONSTANTS.PAGES.SIGN_UP}>
             <Button bgColor={'#fff'} color={'#0356E8'} border={'1px solid #0356E8'}>
               Sign Up
             </Button>
           </Link>
-          <Link to='/auth/login'>
+          <Link to={CONSTANTS.PAGES.SIGN_IN}>
             <Button bgColor={'#0356E8'} color={'#fff'}>
               Sign In
             </Button>
@@ -30,4 +31,4 @@ const Home = () => {
     </Container>
   );
 };
-export default Home;
+export default CallToAction;

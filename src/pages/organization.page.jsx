@@ -1,7 +1,7 @@
-import { AddNewAdmin } from 'src/features/roles';
+import { OrganizationExplorer } from 'src/features/organization';
 
 const OrganizationPage = () => {
-  return <AddNewAdmin />;
+  return <OrganizationExplorer />;
 };
 
 export default OrganizationPage;

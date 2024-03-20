@@ -15,7 +15,7 @@ import Pagination from '../pagination';
 const TableComponent = ({ data = [], columns }) => {
   const [pagination, setPagination] = React.useState({
     pageIndex: 0,
-    pageSize: 7,
+    pageSize: 5,
   });
 
   const table = useReactTable({

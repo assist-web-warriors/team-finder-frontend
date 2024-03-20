@@ -2,13 +2,12 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   display: flex;
-  background-color: #fff;
+  flex-direction: column;
+  gap: 30px;
   border-radius: 16px;
-  padding: 40px;
+  background-color: #fff;
   width: 100%;
   height: 100%;
-  flex-direction: column;
-  gap: 40px;
 `;
 
 export default Container;

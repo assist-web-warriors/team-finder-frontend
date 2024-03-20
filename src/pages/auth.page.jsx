@@ -9,9 +9,10 @@ import {
 
 const AuthPages = () => {
   const routes = [
-    { path: '*', element: <Navigate to='/auth/signup' /> },
+    { path: '*', element: <Navigate to='/auth/signup/organization' /> },
     { path: 'login', element: <LoginForm /> },
-    { path: 'signup', element: <SignupForm /> },
+    { path: 'signup/organization', element: <SignupForm /> },
+    { path: 'signup/employee', element: <SignupForm /> },
     { path: 'forgot-password', element: <ForgotPasswordForm /> },
     { path: 'reset-password', element: <ResetPaswordForm /> },
     { path: ':orgId/:orgOwner', element: <EmployeeSignUpForm /> },

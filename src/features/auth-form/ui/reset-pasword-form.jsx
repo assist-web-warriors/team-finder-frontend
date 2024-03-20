@@ -3,6 +3,7 @@ import { Button, Text } from '@chakra-ui/react';
 import { PasswordInput, FormTitle } from '../components';
 import { FormContainer, Paragraph, AuthContainer } from './index.styled';
 import { useFormValidation, resetPasswordSchema } from '../lib';
+import CONSTANTS from 'src/common/constants';
 
 const ResetPaswordForm = () => {
   const { handleSubmit, register, errors } = useFormValidation(resetPasswordSchema);
@@ -37,7 +38,7 @@ const ResetPaswordForm = () => {
           <Paragraph>
             <Text>Don't have an account ?</Text>
             <Text color='blue'>
-              <Link to='/auth/signup' cursor='pointer'>
+              <Link to={CONSTANTS.PAGES.SIGN_UP} cursor='pointer'>
                 Sign Up
               </Link>
             </Text>

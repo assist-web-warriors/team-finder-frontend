@@ -71,7 +71,7 @@ const LoginForm = () => {
           <Paragraph>
             <Text>Don't have an account ?</Text>
             <Text color='blue'>
-              <Link to='/auth/signup' cursor='pointer'>
+              <Link to={CONSTANTS.PAGES.SIGN_UP} cursor='pointer'>
                 Sign Up
               </Link>
             </Text>

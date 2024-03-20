@@ -1,21 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useSignupMutation } from 'src/entities/user/api/user-api';
 import { setUserData } from 'src/entities/user';
-import { Button, Text, Select, useToast } from '@chakra-ui/react';
+import { Button, Text, useToast } from '@chakra-ui/react';
 import { FormInput, PasswordInput, OrganizationOptions, FormTitle } from '../components';
 import { useFormValidation, signupSchema, signupAdminSchema } from '../lib';
-import { FormContainer, Paragraph, FormHeader, AuthContainer } from './index.styled';
+import { FormContainer, Paragraph, AuthContainer } from './index.styled';
 import CONSTANTS from 'src/common/constants';
 
 const SignupForm = () => {
-  const [selected, setSelected] = useState('employee');
-  const selectedSchema =
-    selected === 'employee' ? signupSchema : signupSchema.concat(signupAdminSchema);
-  const { handleSubmit, register, errors } = useFormValidation(selectedSchema);
-
-  // TODO: refactor auth for org admin
+  const { handleSubmit, register, errors } = useFormValidation(
+    signupSchema.concat(signupAdminSchema),
+  );
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -47,21 +44,7 @@ const SignupForm = () => {
     <AuthContainer>
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormContainer>
-          <FormTitle title='Hello' subtitle='To sign up, please fill the fields below.' />
-          <FormHeader>
-            <Select
-              w='170px'
-              h='32px'
-              value={selected}
-              {...register('role')}
-              onChange={(e) => {
-                setSelected(e.target.value);
-                register('role').onChange(e);
-              }}>
-              <option value='admin'>Admin User</option>
-              <option value='employee'>Basic User</option>
-            </Select>
-          </FormHeader>
+          <FormTitle title='Hello there!' subtitle='To sign up, please fill the fields below.' />
           <FormInput
             label='Name'
             placeholder='Enter your name'
@@ -83,7 +66,7 @@ const SignupForm = () => {
             id='password'
             {...register('password')}
           />
-          {selected === 'admin' && <OrganizationOptions register={register} errors={errors} />}
+          <OrganizationOptions register={register} errors={errors} />
           <Button h='48px' mb='16px' colorScheme='blue' type='submit' isLoading={isLoading}>
             Sign up
           </Button>
